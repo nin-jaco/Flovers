@@ -73,9 +73,7 @@
       <DependentUpon>FloversEntityModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repository\Scripts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EntityDeploy Include="Repository\Entities\FloversEntityModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -100,6 +98,11 @@
       <DependentUpon>FloversEntityModel.edmx</DependentUpon>
       <LastGenOutput>FloversEntityModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Repository\Scripts\1_CreateBasicTable.sql" />
+    <Content Include="Repository\Scripts\2_aspnet_SchemaVersions.sql" />
+    <Content Include="Repository\Scripts\3_aspnet_Logevents.sql" />
+    <Content Include="Repository\Scripts\4_elmah.sql" />
+    <Content Include="Repository\Scripts\5_NLog.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
