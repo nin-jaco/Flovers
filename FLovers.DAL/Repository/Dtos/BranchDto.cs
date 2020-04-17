@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 using FLovers.DAL.Repository.Entities;
 using Newtonsoft.Json;
 
-namespace FLovers.Shared.Dtos
+namespace FLovers.DAL.Repository.Dtos
 {
     [DataContract]
     public class BranchDto

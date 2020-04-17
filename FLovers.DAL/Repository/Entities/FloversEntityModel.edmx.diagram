@@ -8,6 +8,11 @@
         <EntityTypeShape EntityType="FLoversModel.Branch" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FLoversModel.Product" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="FLoversModel.Branch_Product" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FLoversModel.AuditEvent" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="FLoversModel.CustomAuditEvent" Width="1.5" PointX="3" PointY="4.75" />
+        <EntityTypeShape EntityType="FLoversModel.EntityAuditEvent" Width="1.5" PointX="3" PointY="7.125" />
+        <AssociationConnector Association="FLoversModel.FK_AuditEvents_CustomAuditEvents" />
+        <AssociationConnector Association="FLoversModel.FK_AuditEvents_EntityAuditEvents" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

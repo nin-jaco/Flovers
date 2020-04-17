@@ -5,6 +5,34 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="FLoversModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AuditEvents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventType" Type="varchar" MaxLength="200" />
+          <Property Name="DatabaseName" Type="varchar" MaxLength="100" />
+          <Property Name="TableName" Type="varchar" MaxLength="200" />
+          <Property Name="PrimaryKey" Type="int" />
+          <Property Name="CrudAction" Type="varchar" MaxLength="100" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Duration" Type="int" />
+          <Property Name="IdChangedBy" Type="int" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="IdBranch" Type="int" />
+          <Property Name="BranchName" Type="varchar" MaxLength="200" />
+          <Property Name="IpAddress" Type="varchar" MaxLength="50" />
+          <Property Name="ObjectAfterChanges" Type="varchar(max)" />
+          <Property Name="IsValid" Type="bit" />
+          <Property Name="ValidationResults" Type="varchar(max)" />
+          <Property Name="CrudResult" Type="int" />
+          <Property Name="IsSuccess" Type="bit" />
+          <Property Name="UserAgent" Type="varchar" MaxLength="200" />
+          <Property Name="Browser" Type="varchar" MaxLength="200" />
+          <Property Name="BrowserVersion" Type="varchar" MaxLength="200" />
+          <Property Name="Environment" Type="varchar(max)" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'FLovers.dbo.Branch_Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Branch_Product">
@@ -24,6 +52,23 @@ warning 6002: The table/view 'FLovers.dbo.Branch_Product' does not have a primar
           <Property Name="TelephoneNumber" Type="varchar" MaxLength="15" />
           <Property Name="OpenDate" Type="date" />
         </EntityType>
+        <EntityType Name="CustomAuditEvents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAuditEvent" Type="int" />
+        </EntityType>
+        <EntityType Name="EntityAuditEvents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAuditEvent" Type="int" />
+          <Property Name="ColumnName" Type="varchar" MaxLength="200" />
+          <Property Name="OriginalValue" Type="varchar(max)" />
+          <Property Name="NewValue" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="Products">
           <Key>
             <PropertyRef Name="Id" />
@@ -33,6 +78,30 @@ warning 6002: The table/view 'FLovers.dbo.Branch_Product' does not have a primar
           <Property Name="WeightedItem" Type="bit" />
           <Property Name="SuggestedSellingPrice" Type="decimal" Precision="14" Scale="2" Nullable="false" />
         </EntityType>
+        <Association Name="FK_AuditEvents_CustomAuditEvents">
+          <End Role="AuditEvents" Type="Self.AuditEvents" Multiplicity="0..1" />
+          <End Role="CustomAuditEvents" Type="Self.CustomAuditEvents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AuditEvents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomAuditEvents">
+              <PropertyRef Name="IdAuditEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AuditEvents_EntityAuditEvents">
+          <End Role="AuditEvents" Type="Self.AuditEvents" Multiplicity="0..1" />
+          <End Role="EntityAuditEvents" Type="Self.EntityAuditEvents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AuditEvents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EntityAuditEvents">
+              <PropertyRef Name="IdAuditEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Branch_Product_Branches">
           <End Role="Branches" Type="Self.Branches" Multiplicity="1" />
           <End Role="Branch_Product" Type="Self.Branch_Product" Multiplicity="*" />
@@ -58,7 +127,10 @@ warning 6002: The table/view 'FLovers.dbo.Branch_Product' does not have a primar
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="FLoversModelStoreContainer">
+          <EntitySet Name="AuditEvents" EntityType="Self.AuditEvents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Branches" EntityType="Self.Branches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomAuditEvents" EntityType="Self.CustomAuditEvents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntityAuditEvents" EntityType="Self.EntityAuditEvents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Branch_Product" EntityType="Self.Branch_Product" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -66,6 +138,14 @@ warning 6002: The table/view 'FLovers.dbo.Branch_Product' does not have a primar
     [Branch_Product].[ProductId] AS [ProductId]
     FROM [dbo].[Branch_Product] AS [Branch_Product]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_AuditEvents_CustomAuditEvents" Association="Self.FK_AuditEvents_CustomAuditEvents">
+            <End Role="AuditEvents" EntitySet="AuditEvents" />
+            <End Role="CustomAuditEvents" EntitySet="CustomAuditEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AuditEvents_EntityAuditEvents" Association="Self.FK_AuditEvents_EntityAuditEvents">
+            <End Role="AuditEvents" EntitySet="AuditEvents" />
+            <End Role="EntityAuditEvents" EntitySet="EntityAuditEvents" />
+          </AssociationSet>
           <AssociationSet Name="FK_Branch_Product_Branches" Association="Self.FK_Branch_Product_Branches">
             <End Role="Branches" EntitySet="Branches" />
             <End Role="Branch_Product" EntitySet="Branch_Product" />
@@ -110,7 +190,91 @@ warning 6002: The table/view 'FLovers.dbo.Branch_Product' does not have a primar
             <End Role="Branches" EntitySet="Branches" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
+          <EntitySet Name="AuditEvents" EntityType="FLoversModel.AuditEvent" />
+          <EntitySet Name="CustomAuditEvents" EntityType="FLoversModel.CustomAuditEvent" />
+          <EntitySet Name="EntityAuditEvents" EntityType="FLoversModel.EntityAuditEvent" />
+          <AssociationSet Name="FK_AuditEvents_CustomAuditEvents" Association="FLoversModel.FK_AuditEvents_CustomAuditEvents">
+            <End Role="AuditEvent" EntitySet="AuditEvents" />
+            <End Role="CustomAuditEvent" EntitySet="CustomAuditEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AuditEvents_EntityAuditEvents" Association="FLoversModel.FK_AuditEvents_EntityAuditEvents">
+            <End Role="AuditEvent" EntitySet="AuditEvents" />
+            <End Role="EntityAuditEvent" EntitySet="EntityAuditEvents" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="AuditEvent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DatabaseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TableName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PrimaryKey" Type="Int32" />
+          <Property Name="CrudAction" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Duration" Type="Int32" />
+          <Property Name="IdChangedBy" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ObjectAfterChanges" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsValid" Type="Boolean" />
+          <Property Name="ValidationResults" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CrudResult" Type="Int32" />
+          <Property Name="IsSuccess" Type="Boolean" />
+          <Property Name="UserAgent" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Browser" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BrowserVersion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Environment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CustomAuditEvents" Relationship="FLoversModel.FK_AuditEvents_CustomAuditEvents" FromRole="AuditEvent" ToRole="CustomAuditEvent" />
+          <NavigationProperty Name="EntityAuditEvents" Relationship="FLoversModel.FK_AuditEvents_EntityAuditEvents" FromRole="AuditEvent" ToRole="EntityAuditEvent" />
+          <Property Name="IdBranch" Type="Int32" />
+          <Property Name="BranchName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CustomAuditEvent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAuditEvent" Type="Int32" />
+          <NavigationProperty Name="AuditEvent" Relationship="FLoversModel.FK_AuditEvents_CustomAuditEvents" FromRole="CustomAuditEvent" ToRole="AuditEvent" />
+        </EntityType>
+        <EntityType Name="EntityAuditEvent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAuditEvent" Type="Int32" />
+          <Property Name="ColumnName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OriginalValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NewValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AuditEvent" Relationship="FLoversModel.FK_AuditEvents_EntityAuditEvents" FromRole="EntityAuditEvent" ToRole="AuditEvent" />
+        </EntityType>
+        <Association Name="FK_AuditEvents_CustomAuditEvents">
+          <End Type="FLoversModel.AuditEvent" Role="AuditEvent" Multiplicity="0..1" />
+          <End Type="FLoversModel.CustomAuditEvent" Role="CustomAuditEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AuditEvent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomAuditEvent">
+              <PropertyRef Name="IdAuditEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AuditEvents_EntityAuditEvents">
+          <End Type="FLoversModel.AuditEvent" Role="AuditEvent" Multiplicity="0..1" />
+          <End Type="FLoversModel.EntityAuditEvent" Role="EntityAuditEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AuditEvent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EntityAuditEvent">
+              <PropertyRef Name="IdAuditEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -145,6 +309,54 @@ warning 6002: The table/view 'FLovers.dbo.Branch_Product' does not have a primar
               <ScalarProperty Name="Id" ColumnName="ProductId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="AuditEvents">
+            <EntityTypeMapping TypeName="FLoversModel.AuditEvent">
+              <MappingFragment StoreEntitySet="AuditEvents">
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="IdBranch" ColumnName="IdBranch" />
+                <ScalarProperty Name="Environment" ColumnName="Environment" />
+                <ScalarProperty Name="BrowserVersion" ColumnName="BrowserVersion" />
+                <ScalarProperty Name="Browser" ColumnName="Browser" />
+                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+                <ScalarProperty Name="IsSuccess" ColumnName="IsSuccess" />
+                <ScalarProperty Name="CrudResult" ColumnName="CrudResult" />
+                <ScalarProperty Name="ValidationResults" ColumnName="ValidationResults" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="ObjectAfterChanges" ColumnName="ObjectAfterChanges" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="IdChangedBy" ColumnName="IdChangedBy" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="CrudAction" ColumnName="CrudAction" />
+                <ScalarProperty Name="PrimaryKey" ColumnName="PrimaryKey" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="DatabaseName" ColumnName="DatabaseName" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomAuditEvents">
+            <EntityTypeMapping TypeName="FLoversModel.CustomAuditEvent">
+              <MappingFragment StoreEntitySet="CustomAuditEvents">
+                <ScalarProperty Name="IdAuditEvent" ColumnName="IdAuditEvent" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntityAuditEvents">
+            <EntityTypeMapping TypeName="FLoversModel.EntityAuditEvent">
+              <MappingFragment StoreEntitySet="EntityAuditEvents">
+                <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+                <ScalarProperty Name="OriginalValue" ColumnName="OriginalValue" />
+                <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+                <ScalarProperty Name="IdAuditEvent" ColumnName="IdAuditEvent" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

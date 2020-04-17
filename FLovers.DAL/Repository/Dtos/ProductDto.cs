@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 using FLovers.DAL.Repository.Entities;
 using Newtonsoft.Json;
 
-namespace FLovers.Shared.Dtos
+namespace FLovers.DAL.Repository.Dtos
 {
     [DataContract]
     public class ProductDto
@@ -19,7 +19,7 @@ namespace FLovers.Shared.Dtos
 
         [DataMember]
         [JsonProperty("weightedItem")]
-        public Nullable<bool> WeightedItem { get; set; }
+        public bool? WeightedItem { get; set; }
 
         [DataMember]
         [JsonProperty("suggestedSellingPrice")]
