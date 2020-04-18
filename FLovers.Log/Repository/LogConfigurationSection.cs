@@ -22,18 +22,22 @@ namespace FLovers.Log.Repository
     //    </logConfiguration>
     // </configuration>
 
-    // Define a custom section named LogConfigurationSection containing a
-    // LogProviderCollection collection of LogProviderConfigElement elements.
-    // The collection is wrapped in an element named "logProviders" in the
-    // web.config file.
-    // LogProviderCollection and LogProviderConfigElement classes are defined below.
-    // This is the key class that shows how to use the ConfigurationCollectionAttribute.
+    /// <summary>
+    /// Define a custom section named LogConfigurationSection containing a
+    /// LogProviderCollection collection of LogProviderConfigElement elements.
+    /// The collection is wrapped in an element named "logProviders" in the
+    /// web.config file.
+    /// LogProviderCollection and LogProviderConfigElement classes are defined below.
+    /// This is the key class that shows how to use the ConfigurationCollectionAttribute.
+    /// </summary>
     public class LogConfigurationSection : ConfigurationSection
     {
-        // Declare the urls collection property.
-        // Note: the "IsDefaultCollection = false" instructs 
-        // .NET Framework to build a nested section of 
-        // the kind <logProviders>...</logProviders>.
+        /// <summary>
+        /// Declare the urls collection property.
+        /// Note: the "IsDefaultCollection = false" instructs 
+        /// .NET Framework to build a nested section of 
+        /// the kind <logProviders>...</logProviders>.
+        /// </summary>
         [ConfigurationProperty("logProviders", IsDefaultCollection = false)]
         [ConfigurationCollection(typeof(LogProviderCollection),
             AddItemName = "add",

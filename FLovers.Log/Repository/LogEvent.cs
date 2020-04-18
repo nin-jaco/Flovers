@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FLovers.Log.Models
+namespace FLovers.Log.Repository
 {
     public class LogEvent
     {

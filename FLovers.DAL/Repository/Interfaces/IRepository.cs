@@ -4,15 +4,15 @@ using FLovers.Shared.RequestObjects;
 
 namespace FLovers.DAL.Repository.Interfaces
 {
-    public interface IRepository<TModel> where TModel : class, new()
+    public interface IRepository<TEntity> where TEntity : class, new()
     {
-        TModel Add(CreateRequest<TModel> request);
-        TModel Remove(DeleteRequest<TModel> request);
-        TModel Update(UpdateRequest<TModel> request);
-        IQueryable<TModel> GetAll(GetAllRequest request);
-        TModel Get(GetByIdRequest<TModel> request);
-        TModel SearchFirst(SearchFirstRequest<TModel> request);
-        IQueryable<TModel> SearchFor(SearchForRequest<TModel> request);
+        TEntity Add(CreateRequest<TEntity> request);
+        TEntity Remove(DeleteRequest<TEntity> request);
+        TEntity Update(UpdateRequest<TEntity> request);
+        IQueryable<TEntity> GetAll(GetAllRequest request);
+        TEntity Get(GetByIdRequest<TEntity> request);
+        TEntity SearchFirst(SearchFirstRequest<TEntity> request);
+        IQueryable<TEntity> SearchFor(SearchForRequest<TEntity> request);
         void SaveChanges(RequestBase requestBase);
     }
 }

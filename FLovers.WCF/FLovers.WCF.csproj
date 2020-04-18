@@ -61,9 +61,20 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BranchService.svc" />
+    <Content Include="ProductService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseService\IBaseService.cs" />
+    <Compile Include="BranchService.svc.cs">
+      <DependentUpon>BranchService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="IBranchService.cs" />
+    <Compile Include="IProductService.cs" />
+    <Compile Include="ProductService.svc.cs">
+      <DependentUpon>ProductService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +87,24 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FLovers.BL\FLovers.BL.csproj">
+      <Project>{635071ED-9B46-4235-9B54-793039F3F86F}</Project>
+      <Name>FLovers.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FLovers.DAL\FLovers.DAL.csproj">
+      <Project>{79CCC1D8-508C-4DBE-9A1B-6A1D3C4A50FC}</Project>
+      <Name>FLovers.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FLovers.Log\FLovers.Log.csproj">
+      <Project>{341356C3-2517-4F50-A43E-912AD4121E29}</Project>
+      <Name>FLovers.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FLovers.Shared\FLovers.Shared.csproj">
+      <Project>{7F1A1495-54F7-45E9-9B23-47CBE42813BA}</Project>
+      <Name>FLovers.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -87,29 +87,34 @@ namespace FLovers.Log.Repository
         /// <param name="logProviderName">name of the log provider</param>
         /// <param name="logLevel">The level of the log messages</param>
         /// <returns>A filtered list of log events</returns>
-        //public IQueryable<LogEvent> GetByDateRangeAndTypePaged(int pageIndex, int pageSize, DateTime start, DateTime end, string logProviderName, string logLevel)
-        //{
-        //    IQueryable<LogEvent> list = null;
+        public IQueryable<LogEvent> GetByDateRangeAndTypePaged(int pageIndex, int pageSize, DateTime start, DateTime end, string logProviderName, string logLevel)
+        {
+            IQueryable<LogEvent> list = null;
 
-        //    switch (logProviderName)
-        //    {
-        //        case "All":
-        //            foreach (string providerName in LogProviders.Keys)
-        //            {
-        //                IQueryable<LogEvent> logList = GetProvider(providerName).GetByDateRangeAndType(pageIndex, pageSize, start, end, logLevel);
-        //                list = (list == null) ? logList : list.Union(logList);
-        //            }
-        //            break;
+            switch (logProviderName)
+            {
+                case "All":
+                    foreach (string providerName in LogProviders.Keys)
+                    {
+                        IQueryable<LogEvent> logList = GetProvider(providerName).GetByDateRangeAndTypePaged(pageIndex, pageSize, start, end, logLevel);
+                        list = (list == null) ? logList : list.Union(logList);
+                    }
+                    break;
 
-        //        default:
-        //            list = GetProvider(logProviderName).GetByDateRangeAndType(pageIndex, pageSize, start, end, logLevel);
-        //            break;
-        //    }
+                default:
+                    list = GetProvider(logProviderName).GetByDateRangeAndTypePaged(pageIndex, pageSize, start, end, logLevel);
+                    break;
+            }
 
-        //    list = list.OrderByDescending(d => d.LogDate);
+            list = list.OrderByDescending(d => d.LogDate);
 
-        //    return IQueryable<LogEvent>(list, pageIndex, pageSize);
-        //}
+            return IQueryable<LogEvent>(list, pageIndex, pageSize);
+        }
+
+        private IQueryable<T> IQueryable<T>(IQueryable<T> list, int pageIndex, int pageSize)
+        {
+            throw new NotImplementedException();
+        }
 
         public IQueryable<LogEvent> GetByDateRangeAndType(DateTime start, DateTime end, string logProviderName, string logLevel)
         {

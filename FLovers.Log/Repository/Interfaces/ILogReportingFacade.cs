@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FLovers.Log.Repository;
 
 namespace FLovers.Log.Models.Interfaces
 {
@@ -19,7 +20,7 @@ namespace FLovers.Log.Models.Interfaces
         /// <param name="logProviderName">If empty all log providers used, otherwise it will be filtered by the specified log provider</param>
         /// <param name="logLevel">The level of the log messages</param>
         /// <returns>A filtered list of log events</returns>
-        //IQueryable<LogEvent> GetByDateRangeAndTypePaged(int pageIndex, int pageSize, DateTime start, DateTime end, string logProviderName, string logLevel);
+        IQueryable<LogEvent> GetByDateRangeAndTypePaged(int pageIndex, int pageSize, DateTime start, DateTime end, string logProviderName, string logLevel);
 
         /// <summary>
         /// Gets a filtered list of log events

@@ -9,7 +9,8 @@ namespace FLovers.Shared.RequestObjects
     {
         [DataMember]
         public ExpressionNode Predicate { get; set; }
-        [DataMember] public RequestBase RequestBase { get; set; }
+        [DataMember] 
+        public RequestBase RequestBase { get; set; }
 
         public SearchForRequest()
         {

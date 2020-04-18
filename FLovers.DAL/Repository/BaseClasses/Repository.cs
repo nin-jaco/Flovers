@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using FLovers.DAL.Extensions;
 using FLovers.DAL.Repository.Interfaces;
 using FLovers.Log.Services.Logging;
@@ -16,55 +12,55 @@ using FLovers.Shared.RequestObjects;
 
 namespace FLovers.DAL.Repository.BaseClasses
 {
-    public class Repository<TModel> : IRepository<TModel> where TModel : class, IDisposable, new()
+    public class Repository<TEntity> : IRepository<TEntity>, IDisposable where TEntity : class,  new()
     {
-        public IContext<TModel> Context { get; protected set; }
-        protected DbSet<TModel> DbSet;
+        public IContext<TEntity> Context { get; protected set; }
+        protected DbSet<TEntity> DbSet;
         public DbContextTransaction Transaction { get; set; }
 
         public Repository()
         {
-            Context = new Context<TModel>();
+            Context = new Context<TEntity>();
             Context.DbContext.Database.CommandTimeout = 300;
-            DbSet = Context.DbContext.Set<TModel>();
+            DbSet = Context.DbContext.Set<TEntity>();
 
         }
 
-        public Repository(IContext<TModel> context)
+        public Repository(IContext<TEntity> context)
         {
             Context = context;
         }
 
-        public virtual TModel Get(GetByIdRequest<TModel> request)
+        public virtual TEntity Get(GetByIdRequest<TEntity> request)
         {
             return DbSet.Find(request.Key);
         }
 
-        public virtual IQueryable<TModel> GetAll(GetAllRequest request)
+        public virtual IQueryable<TEntity> GetAll(GetAllRequest request)
         {
             return DbSet;
         }
 
-        public TModel SearchFirst(SearchFirstRequest<TModel> request)
+        public TEntity SearchFirst(SearchFirstRequest<TEntity> request)
         {
-            var expression = request.Predicate.ToBooleanExpression<TModel>();
+            var expression = request.Predicate.ToBooleanExpression<TEntity>();
             return DbSet.FirstOrDefault(expression);
         }
 
-        public IQueryable<TModel> SearchFor(SearchForRequest<TModel> request)
+        public IQueryable<TEntity> SearchFor(SearchForRequest<TEntity> request)
         {
-            var expression = request.Predicate.ToBooleanExpression<TModel>();
+            var expression = request.Predicate.ToBooleanExpression<TEntity>();
             return DbSet.Where(expression);
         }
 
-        public virtual TModel Add(CreateRequest<TModel> request)
+        public virtual TEntity Add(CreateRequest<TEntity> request)
         {
             Context.DbSet.Add(request.Item);
             SaveChanges(request.RequestBase);
             return request.Item;
         }
 
-        public virtual TModel Remove(DeleteRequest<TModel> request)
+        public virtual TEntity Remove(DeleteRequest<TEntity> request)
         {
             Context.DbSet.Attach(request.Item);
             Context.DbSet.Remove(request.Item);
@@ -72,9 +68,9 @@ namespace FLovers.DAL.Repository.BaseClasses
             return request.Item;
         }
 
-        public virtual TModel Update(UpdateRequest<TModel> request)
+        public virtual TEntity Update(UpdateRequest<TEntity> request)
         {
-            var target = Get(new GetByIdRequest<TModel>(request.Key));
+            var target = Get(new GetByIdRequest<TEntity>(request.Key));
             UpdateIfDifferent(target, request.Item);
             SaveChanges(request.RequestBase);
             return request.Item;
@@ -117,7 +113,7 @@ namespace FLovers.DAL.Repository.BaseClasses
             }
         }
 
-        public void UpdateIfDifferent(TModel target, TModel source)
+        public void UpdateIfDifferent(TEntity target, TEntity source)
         {
             PropertyInfo property = null;
             object targetValue = null;
@@ -143,9 +139,9 @@ namespace FLovers.DAL.Repository.BaseClasses
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                var errorMessage = e.Message + $@"Exception caught in UpdateIfDifferent, Repository.cs. Property name {property?.Name}, targetValue {targetValue?.ToString()}, sourceValue {sourceValue?.ToString()}";
+                var errorMessage = ex.Message + $@"Exception caught in UpdateIfDifferent, Repository.cs. Property name {property?.Name}, targetValue {targetValue?.ToString()}, sourceValue {sourceValue?.ToString()}";
                 ErrorHandler.LogException(new Exception(errorMessage));
             }
 
@@ -158,9 +154,9 @@ namespace FLovers.DAL.Repository.BaseClasses
             {
                 return result = src.GetType().GetProperty(propName)?.GetValue(src, null);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                var errorMessage = e.Message + $@"Exception caught in GetPropValue, In Repository.cs. Property name {propName}, Value is null {result}";
+                var errorMessage = ex.Message + $@"Exception caught in GetPropValue, In Repository.cs. Property name {propName}, Value is null {result}";
                 ErrorHandler.LogException(new Exception(errorMessage));
                 return null;
             }
@@ -179,7 +175,7 @@ namespace FLovers.DAL.Repository.BaseClasses
         }
 
 
-        public Repository<TModel> SaveAndContinue(RequestBase request)
+        public Repository<TEntity> SaveAndContinue(RequestBase request)
         {
             try
             {
@@ -209,7 +205,7 @@ namespace FLovers.DAL.Repository.BaseClasses
             ErrorHandler.LogException(new DbEntityValidationException(exceptionMessage, dbEx.EntityValidationErrors));
         }
 
-        public Repository<TModel> BeginTransaction()
+        public Repository<TEntity> BeginTransaction()
         {
             Transaction = Context.DbContext.Database.BeginTransaction();
             return this;
@@ -247,9 +243,9 @@ namespace FLovers.DAL.Repository.BaseClasses
             .EndTransaction();
          */
 
-        public virtual void SetValues(int id, TModel newObject, RequestBase requestBase)
+        public virtual void SetValues(int id, TEntity newObject, RequestBase requestBase)
         {
-            var existingObject = Get(new GetByIdRequest<TModel>(id));
+            var existingObject = Get(new GetByIdRequest<TEntity>(id));
             Context.DbContext.Entry(existingObject).CurrentValues.SetValues(newObject);
             SaveChanges(requestBase);
         }

@@ -9,23 +9,23 @@ using FLovers.DAL.Repository.Interfaces;
 
 namespace FLovers.DAL.Repository.BaseClasses
 {
-    public class Context<TModel> : IContext<TModel> where TModel : class, IDisposable
+    public class Context<TEntity> : IContext<TEntity> where TEntity : class
     {
         public Context()
         {
             DbContext = new AuditDb.FLoversEntities();
-            DbSet = DbContext.Set<TModel>();
+            DbSet = DbContext.Set<TEntity>();
         }
 
         public Context(AuditDbContext db)
         {
             DbContext = db;
-            DbSet = DbContext.Set<TModel>();
+            DbSet = DbContext.Set<TEntity>();
         }
 
         public AuditDbContext DbContext { get; set; }
 
-        public IDbSet<TModel> DbSet { get; set; }
+        public IDbSet<TEntity> DbSet { get; set; }
 
 
         public void Dispose()

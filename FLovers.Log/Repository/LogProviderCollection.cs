@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FLovers.Log.Repository
 {
-    // Define the UrlsCollection that will contain the UrlsConfigElement
-    // elements.
+    /// <summary>
+    /// Define the UrlsCollection that will contain the UrlsConfigElement elements.
+    /// </summary>
     public class LogProviderCollection : ConfigurationElementCollection
     {
         public LogProviderCollection()

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 
 namespace FLovers.Log.Repository
 {
-    // Define the element type contained by the UrlsCollection
-    // collection.
+    /// <summary>
+    /// Define the element type contained by the UrlsCollection collection.
+    /// </summary>
     public class LogProviderConfigElement : ConfigurationElement
     {
         public LogProviderConfigElement(string name, string type)

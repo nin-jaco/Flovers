@@ -125,5 +125,9 @@ namespace FLovers.Log.Repository
             Context.Database.ExecuteSqlCommand(commandText, paramStartDate, paramEndDate, paramLogLevelList);
         }
 
+        public IQueryable<LogEvent> GetByDateRangeAndTypePaged(int pageIndex, int pageSize, DateTime start, DateTime end, string logLevel)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

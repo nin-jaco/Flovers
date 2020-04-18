@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FLovers.Log.Models;
-using FLovers.Log.Models.Interfaces;
 using FLovers.Log.Repository.Entities;
 using FLovers.Log.Repository.Interfaces;
 
@@ -136,5 +132,18 @@ namespace FLovers.Log.Repository
             Context.Database.ExecuteSqlCommand(commandText, paramStartDate, paramEndDate, paramLogLevelList);
         }
 
+        /// <summary>
+        /// Currently we are not reporting on any of the errors but it is meant to be displayed on a dashboard
+        /// </summary>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <param name="logLevel"></param>
+        /// <returns></returns>
+        public IQueryable<LogEvent> GetByDateRangeAndTypePaged(int pageIndex, int pageSize, DateTime start, DateTime end, string logLevel)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

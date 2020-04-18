@@ -4,10 +4,10 @@ using Audit.EntityFramework;
 
 namespace FLovers.DAL.Repository.Interfaces
 {
-    public interface IContext<T> : IDisposable where T : class
+    public interface IContext<TEntity> : IDisposable where TEntity : class
     {
         AuditDbContext DbContext { get; set; }
-        IDbSet<T> DbSet { get; set; }
+        IDbSet<TEntity> DbSet { get; set; }
     }
 
 }

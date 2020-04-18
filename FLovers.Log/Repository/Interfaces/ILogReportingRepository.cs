@@ -35,5 +35,7 @@ namespace FLovers.Log.Repository.Interfaces
         /// <param name="end">end date</param>
         /// <param name="logLevels">string array of log levels</param>
         void ClearLog(DateTime start, DateTime end, string[] logLevels);
+
+        IQueryable<LogEvent> GetByDateRangeAndTypePaged(int pageIndex, int pageSize, DateTime start, DateTime end, string logLevel);
     }
 }
