@@ -82,9 +82,9 @@ namespace FLovers.DAL.Repository.BaseClasses
             {
                 Context.DbContext.AddAuditCustomField("IdChangedBy", request.IdUser);
                 Context.DbContext.AddAuditCustomField("Username", request.Username);
-                Context.DbContext.AddAuditCustomField("IdDealer", request.IdBranch);
-                Context.DbContext.AddAuditCustomField("DealerName", request.BranchName);
-                Context.DbContext.AddAuditCustomField("IpAddress", request.Ip);
+                Context.DbContext.AddAuditCustomField("IdBranch", request.IdBranch);
+                Context.DbContext.AddAuditCustomField("BranchName", request.BranchName);
+                Context.DbContext.AddAuditCustomField("IpAddress", request.SenderComputerIp);
                 Context.DbContext.AddAuditCustomField("UserAgent", request.UserAgent);
                 Context.DbContext.AddAuditCustomField("Browser", request.Browser);
                 Context.DbContext.AddAuditCustomField("BrowserVersion", request.BrowserVersion);

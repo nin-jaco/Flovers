@@ -28,15 +28,6 @@ namespace FLovers.Shared.BaseClasses
         [DataMember] 
         public string BranchName { get; set; }
 
-        [DataMember] 
-        public string Protocol { get; set; }
-        [DataMember] 
-        public string Host { get; set; }
-        [DataMember] 
-        public string Port { get; set; }
-        [DataMember] 
-        public string Ip { get; set; }
-
         public RequestBase()
         {
         }

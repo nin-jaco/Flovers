@@ -25,10 +25,7 @@ namespace FLovers.DAL.Repository.Dtos
         [JsonProperty("openDate")]
         public DateTime? OpenDate { get; set; }
 
-        [DataMember]
-        [JsonProperty("products")]
-        public ICollection<Product> Products { get; set; }
-
+        
         public static BranchDto FromModel(Branch model)
         {
             return new BranchDto()
@@ -37,7 +34,6 @@ namespace FLovers.DAL.Repository.Dtos
                 Name = model.Name, 
                 TelephoneNumber = model.TelephoneNumber, 
                 OpenDate = model.OpenDate, 
-                Products = model.Products, 
             }; 
         }
 
@@ -49,7 +45,6 @@ namespace FLovers.DAL.Repository.Dtos
                 Name = Name, 
                 TelephoneNumber = TelephoneNumber, 
                 OpenDate = OpenDate, 
-                Products = Products, 
             }; 
         }
     }

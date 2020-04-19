@@ -25,9 +25,6 @@ namespace FLovers.DAL.Repository.Dtos
         [JsonProperty("suggestedSellingPrice")]
         public decimal SuggestedSellingPrice { get; set; }
 
-        [DataMember]
-        [JsonProperty("branches")]
-        public ICollection<Branch> Branches { get; set; }
 
         public static ProductDto FromModel(Product model)
         {
@@ -37,7 +34,6 @@ namespace FLovers.DAL.Repository.Dtos
                 Name = model.Name, 
                 WeightedItem = model.WeightedItem, 
                 SuggestedSellingPrice = model.SuggestedSellingPrice, 
-                Branches = model.Branches, 
             }; 
         }
 
@@ -49,7 +45,6 @@ namespace FLovers.DAL.Repository.Dtos
                 Name = Name, 
                 WeightedItem = WeightedItem, 
                 SuggestedSellingPrice = SuggestedSellingPrice, 
-                Branches = Branches, 
             }; 
         }
     }

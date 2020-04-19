@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\DateTimeExtensionMethods.cs" />
+    <Compile Include="Helpers\DateTimeHelper.cs" />
+    <Compile Include="Helpers\FormsHelper.cs" />
+    <Compile Include="Helpers\FuzzyDateTime.cs" />
+    <Compile Include="Helpers\StringExtensionMethods.cs" />
+    <Compile Include="Helpers\TimePeriodHelper.cs" />
     <Compile Include="Repository\LogConfigurationSection.cs" />
     <Compile Include="Repository\LogEvent.cs" />
     <Compile Include="Repository\LogProviderCollection.cs" />
@@ -124,10 +130,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <Content Include="NLog.config" />
     <None Include="packages.config" />
     <None Include="Repository\Entities\FLoversErrorEntityModel.edmx.diagram">
       <DependentUpon>FLoversErrorEntityModel.edmx</DependentUpon>
     </None>
+    <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Repository\Entities\FLoversErrorEntityModel.Context.tt">

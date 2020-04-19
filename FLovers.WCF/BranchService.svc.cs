@@ -20,51 +20,51 @@ namespace FLovers.WCF
 
     public class BranchService : IBranchService
     {
-        public BranchLogic LogicBase { get; set; } = new BranchLogic();
+        public BranchLogic BranchLogic { get; set; } = new BranchLogic();
 
         public virtual CreateResponse<BranchDto> Create(CreateRequest<BranchDto> request)
         {
-            return LogicBase.Create(request);
+            return BranchLogic.Create(request);
         }
 
         public DeleteResponse<BranchDto> Delete(DeleteRequest<BranchDto> request)
         {
-            return LogicBase.Delete(request);
+            return BranchLogic.Delete(request);
         }
 
         public UpdateResponse<BranchDto> Update(UpdateRequest<BranchDto> request)
         {
-            return LogicBase.Update(request);
+            return BranchLogic.Update(request);
         }
 
         public GetAllResponse<BranchDto> GetAll(GetAllRequest request)
         {
-            return LogicBase.GetAll(request);
+            return BranchLogic.GetAll(request);
         }
 
         public GetByIdResponse<BranchDto> GetById(GetByIdRequest<BranchDto> request)
         {
-            return LogicBase.GetById(request);
+            return BranchLogic.GetById(request);
         }
 
         public SearchFirstResponse<BranchDto> SearchFirst(SearchFirstRequest<BranchDto> request)
         {
-            return LogicBase.SearchFirst(request);
+            return BranchLogic.SearchFirst(request);
         }
 
         public SearchForResponse<BranchDto> SearchFor(SearchForRequest<BranchDto> request)
         {
-            return LogicBase.SearchFor(request);
+            return BranchLogic.SearchFor(request);
         }
 
         public GetAllPagedResponse<BranchDto> GetAllPaged(GetAllPagedRequest<BranchDto> request)
         {
-            return LogicBase.GetAllPaged(request);
+            return BranchLogic.GetAllPaged(request);
         }
 
         public GetAllPagedAndFilteredResponse<BranchDto> GetAllPagedAndFiltered(GetAllPagedAndFilteredRequest<BranchDto> request)
         {
-            return LogicBase.GetAllPagedAndFiltered(request);
+            return BranchLogic.GetAllPagedAndFiltered(request);
         }
     }
 }

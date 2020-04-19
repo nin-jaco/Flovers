@@ -1,0 +1,88 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Flovers.Web.Site" %>
+<%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Welcome to the Product Manager Application</title>
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <link href="styles/base.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <telerik:RadScriptManager runat="server"></telerik:RadScriptManager>
+        <div id="wrapper">
+        <telerik:RadPageLayout runat="server" ID="MasterLayout" GridType="Fluid">
+            <Rows>
+                <%--Header--%>
+                <telerik:LayoutRow CssClass="header">
+                    <Columns>
+                        <%--Logo--%>
+                        <telerik:LayoutColumn Span="2" SpanMd="3" SpanSm="12" SpanXs="12">
+                            <a href="#" class="logo">
+                                <img src="images/logo.png" alt="site logo"/>
+                            </a>
+                        </telerik:LayoutColumn>
+
+                        <%--Main Nav--%>
+                        <telerik:LayoutColumn Span="10" SpanMd="9" SpanSm="12" SpanXs="12">
+                            <telerik:RadMenu ID="RadMenu1" runat="server" RenderMode="Auto">
+                                <Items>
+                                    <telerik:RadMenuItem Text="Home" NavigateUrl="Default.aspx" />
+                                    <telerik:RadMenuItem IsSeparator="true" />
+                                    <telerik:RadMenuItem Text="Branches" NavigateUrl="ManageBranches.aspx" />
+                                    <telerik:RadMenuItem IsSeparator="true" />
+                                    <telerik:RadMenuItem Text="Products" NavigateUrl="ManageProducts.aspx" />
+                                    <telerik:RadMenuItem IsSeparator="true" />
+                                    <telerik:RadMenuItem Text="Distribution" NavigateUrl="ManageDistribution.aspx" />
+                                </Items>
+                            </telerik:RadMenu>
+                        </telerik:LayoutColumn>
+                    </Columns>
+                </telerik:LayoutRow>
+
+                <%--Main--%>
+                <telerik:LayoutRow>
+                    <Columns>
+                        <%--Sidebar--%>
+                        <telerik:LayoutColumn Span="2" HiddenMd="true" HiddenSm="true" HiddenXs="true">
+                            <telerik:RadMenu ID="RadMenu2" CssClass="sidebar" Flow="Vertical" runat="server" >
+                                <Items>
+                                    <telerik:RadMenuItem Text="Manage Branches" NavigateUrl="ManageBranches.aspx" />
+                                    <telerik:RadMenuItem IsSeparator="true" />
+                                    <telerik:RadMenuItem Text="Manage Products" NavigateUrl="ManageProducts.aspx" />
+                                    <telerik:RadMenuItem IsSeparator="true" />
+                                    <telerik:RadMenuItem Text="Manage Distribution" NavigateUrl="ManageDistribution.aspx" />
+                                </Items>
+                            </telerik:RadMenu>
+                        </telerik:LayoutColumn>
+
+                        <%--Content--%>
+                        <telerik:CompositeLayoutColumn Span="10" SpanMd="12" SpanSm="12" SpanXs="12">
+                            <Content>
+                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                </asp:ContentPlaceHolder>
+                                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                                </asp:ContentPlaceHolder>
+                            </Content>
+                        </telerik:CompositeLayoutColumn>
+                    </Columns>
+                </telerik:LayoutRow>
+
+                <%--Footer--%>
+                <telerik:LayoutRow>
+                    <Columns>
+                        <telerik:LayoutColumn CssClass="footer">
+                            <hr />
+                            Footer: © 2002-2050 NinJaco Inc, Three Anchor Way, Cape Town
+                        </telerik:LayoutColumn>
+                    </Columns>
+                </telerik:LayoutRow>
+            </Rows>
+        </telerik:RadPageLayout>
+       </div>
+    </form>
+</body>
+</html>
