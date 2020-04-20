@@ -30,27 +30,22 @@ namespace Flovers.Web
 
         protected void RadGrid1_OnItemCreated(object sender, GridItemEventArgs e)
         {
-            throw new NotImplementedException();
         }
 
         protected void RadGrid1_OnItemDataBound(object sender, GridItemEventArgs e)
         {
-            throw new NotImplementedException();
         }
 
         protected void RadGrid1_OnUpdateCommand(object sender, GridCommandEventArgs e)
         {
-            throw new NotImplementedException();
         }
 
         protected void RadGrid1_OnInsertCommand(object sender, GridCommandEventArgs e)
         {
-            throw new NotImplementedException();
         }
 
         protected void RadGrid1_OnDeleteCommand(object sender, GridCommandEventArgs e)
         {
-            throw new NotImplementedException();
         }
     }
 }

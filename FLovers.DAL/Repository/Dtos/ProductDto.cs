@@ -19,7 +19,7 @@ namespace FLovers.DAL.Repository.Dtos
 
         [DataMember]
         [JsonProperty("weightedItem")]
-        public bool? WeightedItem { get; set; }
+        public bool? WeightedItem { get; set; } = false;
 
         [DataMember]
         [JsonProperty("suggestedSellingPrice")]

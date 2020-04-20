@@ -2,6 +2,22 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <telerik:RadPageLayout runat="server" ID="JumbotronLayout" CssClass="jumbotron" GridType="Fluid">
+        <Rows>
+            <telerik:LayoutRow>
+                <Columns>
+                    <telerik:LayoutColumn Span="10" SpanMd="12" SpanSm="12" SpanXs="12">
+                        <h1>Manage Branches.</h1>
+                        <h2>H2 Title, font size 30 px.</h2>
+                        <telerik:RadButton runat="server" ID="RadButton0" Text="Button" ButtonType="SkinnedButton"></telerik:RadButton>
+                    </telerik:LayoutColumn>
+                    <telerik:LayoutColumn Span="2" HiddenMd="true" HiddenSm="true" HiddenXs="true">
+                        <img src="images/Thumbnails/Desert.jpg" />
+                    </telerik:LayoutColumn>
+                </Columns>
+            </telerik:LayoutRow>
+        </Rows>
+    </telerik:RadPageLayout>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <telerik:RadAjaxPanel ID="RadAjaxPanel1" ClientEvents-OnRequestStart="onRequestStart" runat="server" CssClass="grid_wrapper">
@@ -21,22 +37,18 @@
                         UniqueName="Name">
                         <HeaderStyle Width="150px" />
                     </telerik:GridBoundColumn>
-                    <telerik:GridNumericColumn DataField="TelephoneNumber" HeaderText="TelephoneNumber" SortExpression="TelephoneNumber"
+                    <telerik:GridBoundColumn DataField="TelephoneNumber" HeaderText="Telephone Number" SortExpression="TelephoneNumber"
                         UniqueName="TelephoneNumber">
                         <HeaderStyle Width="150px" />
-                    </telerik:GridNumericColumn>
-                    <telerik:GridDateTimeColumn DataField="OpenDate" HeaderText="OpenDate" SortExpression="OpenDate"
+                    </telerik:GridBoundColumn>
+                    <telerik:GridDateTimeColumn DataField="OpenDate" HeaderText="Open Date" SortExpression="OpenDate"
                         UniqueName="OpenDate" PickerType="DatePicker" DataFormatString="{0:MM/dd/yyyy}">
                         <HeaderStyle Width="150px" />
                     </telerik:GridDateTimeColumn>
-                    <telerik:GridRatingColumn DataField="Rating" HeaderText="Rating" SortExpression="Rating"
-                        UniqueName="Rating" GroupByExpression="Rating Group By Rating">
-                        <HeaderStyle Width="150px" />
-                    </telerik:GridRatingColumn>
-                   <telerik:GridEditCommandColumn UniqueName="EditColumn" HeaderText="Edit Command Column">
+                   <telerik:GridEditCommandColumn UniqueName="EditColumn" HeaderText="Edit">
                         <HeaderStyle Width="70px" />
                     </telerik:GridEditCommandColumn>
-                    <telerik:GridButtonColumn CommandName="Delete" Text="Delete" UniqueName="DeleteColumn" HeaderText="Delete Command Column">
+                    <telerik:GridButtonColumn CommandName="Delete" Text="Delete" UniqueName="DeleteColumn" HeaderText="Delete">
                         <HeaderStyle Width="70px" />
                     </telerik:GridButtonColumn>
                 </Columns>

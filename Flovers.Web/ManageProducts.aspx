@@ -2,6 +2,22 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <telerik:RadPageLayout runat="server" ID="JumbotronLayout" CssClass="jumbotron" GridType="Fluid">
+        <Rows>
+            <telerik:LayoutRow>
+                <Columns>
+                    <telerik:LayoutColumn Span="10" SpanMd="12" SpanSm="12" SpanXs="12">
+                        <h1>Manage Products.</h1>
+                        <h2>H2 Title, font size 30 px.</h2>
+                        <telerik:RadButton runat="server" ID="RadButton0" Text="Button" ButtonType="SkinnedButton"></telerik:RadButton>
+                    </telerik:LayoutColumn>
+                    <telerik:LayoutColumn Span="2" HiddenMd="true" HiddenSm="true" HiddenXs="true">
+                        <img src="images/Thumbnails/Desert.jpg" />
+                    </telerik:LayoutColumn>
+                </Columns>
+            </telerik:LayoutRow>
+        </Rows>
+    </telerik:RadPageLayout>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <telerik:RadAjaxPanel ID="RadAjaxPanel1" ClientEvents-OnRequestStart="onRequestStart" runat="server" CssClass="grid_wrapper">
@@ -21,18 +37,18 @@
                         UniqueName="Name">
                         <HeaderStyle Width="150px" />
                     </telerik:GridBoundColumn>
-                    <telerik:GridNumericColumn DataField="WeightedItem" HeaderText="WeightedItem" SortExpression="WeightedItem"
+                    <telerik:GridBoundColumn DataField="WeightedItem" HeaderText="Weighted Item" SortExpression="WeightedItem"
                         UniqueName="WeightedItem">
                         <HeaderStyle Width="150px" />
-                    </telerik:GridNumericColumn>
-                    <telerik:GridRatingColumn DataField="SuggestedSellingPrice" HeaderText="SuggestedSellingPrice" SortExpression="SuggestedSellingPrice"
+                    </telerik:GridBoundColumn>
+                    <telerik:GridNumericColumn DataField="SuggestedSellingPrice" HeaderText="Suggested Selling Price" SortExpression="SuggestedSellingPrice"
                         UniqueName="SuggestedSellingPrice" >
                         <HeaderStyle Width="150px" />
-                    </telerik:GridRatingColumn>
-                    <telerik:GridEditCommandColumn UniqueName="EditColumn" HeaderText="Edit Command Column">
+                    </telerik:GridNumericColumn>
+                    <telerik:GridEditCommandColumn UniqueName="EditColumn" HeaderText="Edit">
                         <HeaderStyle Width="70px" />
                     </telerik:GridEditCommandColumn>
-                    <telerik:GridButtonColumn CommandName="Delete" Text="Delete" UniqueName="DeleteColumn" HeaderText="Delete Command Column">
+                    <telerik:GridButtonColumn CommandName="Delete" Text="Delete" UniqueName="DeleteColumn" HeaderText="Delete">
                         <HeaderStyle Width="70px" />
                     </telerik:GridButtonColumn>
                 </Columns>

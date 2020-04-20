@@ -50,11 +50,11 @@
                         <telerik:LayoutColumn Span="2" HiddenMd="true" HiddenSm="true" HiddenXs="true">
                             <telerik:RadMenu ID="RadMenu2" CssClass="sidebar" Flow="Vertical" runat="server" >
                                 <Items>
-                                    <telerik:RadMenuItem Text="Manage Branches" NavigateUrl="ManageBranches.aspx" />
+                                    <telerik:RadMenuItem Text="Branches" NavigateUrl="ManageBranches.aspx" />
                                     <telerik:RadMenuItem IsSeparator="true" />
-                                    <telerik:RadMenuItem Text="Manage Products" NavigateUrl="ManageProducts.aspx" />
+                                    <telerik:RadMenuItem Text="Products" NavigateUrl="ManageProducts.aspx" />
                                     <telerik:RadMenuItem IsSeparator="true" />
-                                    <telerik:RadMenuItem Text="Manage Distribution" NavigateUrl="ManageDistribution.aspx" />
+                                    <telerik:RadMenuItem Text="Distribution" NavigateUrl="ManageDistribution.aspx" />
                                 </Items>
                             </telerik:RadMenu>
                         </telerik:LayoutColumn>
