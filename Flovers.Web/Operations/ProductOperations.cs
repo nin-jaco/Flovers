@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Flovers.Web.Utilities;
 using FLovers.DAL.Repository.Dtos;
 using FLovers.Shared.BaseClasses;
 using FLovers.Shared.RequestObjects;
 using FLovers.Shared.ResponseObjects;
 using FLovers.WCF;
+using FLovers.WCF.Utilities;
 
 namespace Flovers.Web.Operations
 {

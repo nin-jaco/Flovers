@@ -4,6 +4,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
-    Select a 
+    Select a Branch from the list below:
     <telerik:RadDropDownList runat="server" ID="ddlBranches" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="ddlBranches_OnSelectedIndexChanged"></telerik:RadDropDownList>
 </asp:Content>

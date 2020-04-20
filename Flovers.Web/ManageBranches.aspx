@@ -6,14 +6,14 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <telerik:RadAjaxPanel ID="RadAjaxPanel1" ClientEvents-OnRequestStart="onRequestStart" runat="server" CssClass="grid_wrapper">
         <telerik:RadGrid ID="RadGrid1" runat="server" PageSize="10" PagerStyle-PageButtonCount="5"
-            OnNeedDataSource="RadGrid1_NeedDataSource" OnItemCreated="RadGrid1_ItemCreated" OnItemDataBound="RadGrid1_ItemDataBound"
-            OnUpdateCommand="RadGrid1_UpdateCommand" OnInsertCommand="RadGrid1_InsertCommand" OnDeleteCommand="RadGrid1_DeleteCommand"
+            OnNeedDataSource="RadGrid1_OnNeedDataSource" OnItemCreated="RadGrid1_OnItemCreated" OnItemDataBound="RadGrid1_OnItemDataBound"
+            OnUpdateCommand="RadGrid1_OnUpdateCommand" OnInsertCommand="RadGrid1_OnInsertCommand" OnDeleteCommand="RadGrid1_OnDeleteCommand"
             AllowPaging="True" AllowSorting="true" ShowGroupPanel="true" RenderMode="Auto">
             <GroupingSettings ShowUnGroupButton="true" />
             <ExportSettings ExportOnlyData="true" IgnorePaging="true"></ExportSettings>
             <MasterTableView AutoGenerateColumns="False"
                 AllowFilteringByColumn="true" TableLayout="Fixed"
-                DataKeyNames="ID" CommandItemDisplay="Top"
+                DataKeyNames="Id" CommandItemDisplay="Top"
                 InsertItemPageIndexAction="ShowItemOnFirstPage">
                 <CommandItemSettings ShowExportToCsvButton="true" ShowExportToExcelButton="true" ShowExportToPdfButton="true" ShowExportToWordButton="true" />
                 <Columns>
@@ -21,24 +21,19 @@
                         UniqueName="Name">
                         <HeaderStyle Width="150px" />
                     </telerik:GridBoundColumn>
-                    <telerik:GridNumericColumn DataField="Age" HeaderText="Age" SortExpression="Age"
-                        UniqueName="Age">
+                    <telerik:GridNumericColumn DataField="TelephoneNumber" HeaderText="TelephoneNumber" SortExpression="TelephoneNumber"
+                        UniqueName="TelephoneNumber">
                         <HeaderStyle Width="150px" />
                     </telerik:GridNumericColumn>
-                    <telerik:GridDateTimeColumn DataField="BirthDate" HeaderText="BirthDate" SortExpression="BirthDate"
-                        UniqueName="BirthDate" PickerType="DatePicker" DataFormatString="{0:MM/dd/yyyy}">
+                    <telerik:GridDateTimeColumn DataField="OpenDate" HeaderText="OpenDate" SortExpression="OpenDate"
+                        UniqueName="OpenDate" PickerType="DatePicker" DataFormatString="{0:MM/dd/yyyy}">
                         <HeaderStyle Width="150px" />
                     </telerik:GridDateTimeColumn>
                     <telerik:GridRatingColumn DataField="Rating" HeaderText="Rating" SortExpression="Rating"
                         UniqueName="Rating" GroupByExpression="Rating Group By Rating">
                         <HeaderStyle Width="150px" />
                     </telerik:GridRatingColumn>
-                    <telerik:GridDropDownColumn DataField="City" HeaderText="City" SortExpression="City"
-                        ListDataMember="City" ListTextField="City"
-                        UniqueName="City" DropDownControlType="RadComboBox">
-                        <HeaderStyle Width="150px" />
-                    </telerik:GridDropDownColumn>
-                    <telerik:GridEditCommandColumn UniqueName="EditColumn" HeaderText="Edit Command Column">
+                   <telerik:GridEditCommandColumn UniqueName="EditColumn" HeaderText="Edit Command Column">
                         <HeaderStyle Width="70px" />
                     </telerik:GridEditCommandColumn>
                     <telerik:GridButtonColumn CommandName="Delete" Text="Delete" UniqueName="DeleteColumn" HeaderText="Delete Command Column">

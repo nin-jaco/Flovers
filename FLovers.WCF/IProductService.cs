@@ -11,7 +11,7 @@ using FLovers.WCF.BaseService;
 
 namespace FLovers.WCF
 {
-    [ServiceContract(Namespace = "FLovers.WCF", Name = "IProductService", SessionMode = SessionMode.NotAllowed)]
+    [ServiceContract(Namespace = "FLovers.WCF", Name = "ProductService", SessionMode = SessionMode.NotAllowed)]
     [ServiceKnownType(typeof(ProductDto))]
     public interface IProductService : IBaseService<ProductDto>
     {

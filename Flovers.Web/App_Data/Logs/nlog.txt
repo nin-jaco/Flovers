@@ -1,1 +1,93 @@
-﻿
+﻿2020-04-20 09:15:55.3458 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-04-20 09:15:55.4218 Debug Found assembly location directory: 'C:\Source\FLovers\FLovers\Flovers.Web\bin' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2020-04-20 09:15:55.4248 Debug Search for auto loading files in location: C:\Source\FLovers\FLovers\Flovers.Web\bin
+2020-04-20 09:15:55.4248 Debug Auto loading based on AppDomain-BaseDirectory found location: C:\Source\FLovers\FLovers\Flovers.Web
+2020-04-20 09:15:55.4248 Debug Search for auto loading files in location: C:\Source\FLovers\FLovers\Flovers.Web
+2020-04-20 09:15:55.4248 Debug Start auto loading, location: C:\Source\FLovers\FLovers\Flovers.Web\bin
+2020-04-20 09:15:55.4248 Debug Auto loading done
+2020-04-20 09:15:55.4248 Info Message Template Auto Format enabled
+2020-04-20 09:15:55.4638 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-04-20 09:15:55.4838 Debug Setting 'ColoredConsoleTarget.name' to 'consolelog'
+2020-04-20 09:15:55.4838 Debug Setting 'ColoredConsoleTarget.layout' to '${date:format=HH\:mm\:ss}|${level}|${stacktrace}|${message}'
+2020-04-20 09:15:55.4838 Debug Setting 'DateLayoutRenderer.format' to 'HH:mm:ss'
+2020-04-20 09:15:55.4868 Info Adding target ColoredConsoleTarget(Name=consolelog)
+2020-04-20 09:15:55.4868 Debug Registered target consolelog: NLog.Targets.ColoredConsoleTarget
+2020-04-20 09:15:55.4868 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-04-20 09:15:55.4868 Debug Setting 'FileTarget.name' to 'filelog'
+2020-04-20 09:15:55.4868 Debug Setting 'FileTarget.fileName' to '${basedir}/App_Data/Logs/Site.log'
+2020-04-20 09:15:55.4868 Debug Setting 'FileTarget.layout' to '${date}: ${message}'
+2020-04-20 09:15:55.4868 Info Adding target FileTarget(Name=filelog)
+2020-04-20 09:15:55.4868 Debug Registered target filelog: NLog.Targets.FileTarget
+2020-04-20 09:15:55.4868 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-04-20 09:15:55.5018 Debug Setting 'EventLogTarget.name' to 'eventlog'
+2020-04-20 09:15:55.5018 Debug Setting 'EventLogTarget.source' to 'WCF'
+2020-04-20 09:15:55.5018 Debug Setting 'EventLogTarget.log' to 'Application'
+2020-04-20 09:15:55.5018 Debug Setting 'EventLogTarget.layout' to '${date}: ${message} ${stacktrace}'
+2020-04-20 09:15:55.5018 Info Adding target EventLogTarget(Name=eventlog)
+2020-04-20 09:15:55.5018 Debug Registered target eventlog: NLog.Targets.EventLogTarget
+2020-04-20 09:15:55.5018 Debug Setting 'DatabaseTarget.dbProvider' to 'sqlserver'
+2020-04-20 09:15:55.5018 Debug Setting 'DatabaseTarget.connectionString' to 'data source=data source=.;initial catalog=FLovers;integrated security=true;'
+2020-04-20 09:15:55.5018 Debug Setting 'DatabaseTarget.commandText' to '
+        insert into NLog_Error ([time_stamp],[level],[host],[type],[source],[logger],[message],[stacktrace],[allxml]) values(@time_stamp,@level,@host,@type,@source,@logger,@message,@stacktrace,@allxml);
+      '
+2020-04-20 09:15:55.5018 Debug Setting 'DatabaseTarget.name' to 'databaselog'
+2020-04-20 09:15:55.5018 Debug Setting 'DatabaseParameterInfo.name' to '@time_stamp'
+2020-04-20 09:15:55.5018 Debug Setting 'DatabaseParameterInfo.layout' to '${date:format=yyyy\-MM\-dd HH\:mm\:ss.fff}'
+2020-04-20 09:15:55.5018 Debug Setting 'DateLayoutRenderer.format' to 'yyyy-MM-dd HH:mm:ss.fff'
+2020-04-20 09:15:55.5018 Debug Setting 'DatabaseParameterInfo.name' to '@level'
+2020-04-20 09:15:55.5018 Debug Setting 'DatabaseParameterInfo.layout' to '${level}'
+2020-04-20 09:15:55.5018 Debug Setting 'DatabaseParameterInfo.name' to '@host'
+2020-04-20 09:15:55.5178 Debug Setting 'DatabaseParameterInfo.layout' to '${machinename}'
+2020-04-20 09:15:55.5178 Debug Setting 'DatabaseParameterInfo.name' to '@type'
+2020-04-20 09:15:55.5178 Debug Setting 'DatabaseParameterInfo.layout' to '${exception:format=type}'
+2020-04-20 09:15:55.5178 Debug Setting 'ExceptionLayoutRenderer.format' to 'type'
+2020-04-20 09:15:55.5338 Debug Setting 'DatabaseParameterInfo.name' to '@source'
+2020-04-20 09:15:55.5338 Debug Setting 'DatabaseParameterInfo.layout' to '${callsite:className=true:fileName=false:includeSourcePath=false:methodName=false}'
+2020-04-20 09:15:55.5338 Debug Setting 'CallSiteLayoutRenderer.className' to 'true'
+2020-04-20 09:15:55.5338 Debug Setting 'CallSiteLayoutRenderer.fileName' to 'false'
+2020-04-20 09:15:55.5338 Debug Setting 'CallSiteLayoutRenderer.includeSourcePath' to 'false'
+2020-04-20 09:15:55.5338 Debug Setting 'CallSiteLayoutRenderer.methodName' to 'false'
+2020-04-20 09:15:55.5338 Debug Setting 'DatabaseParameterInfo.name' to '@logger'
+2020-04-20 09:15:55.5338 Debug Setting 'DatabaseParameterInfo.layout' to '${logger}'
+2020-04-20 09:15:55.5338 Debug Setting 'DatabaseParameterInfo.name' to '@message'
+2020-04-20 09:15:55.5338 Debug Setting 'DatabaseParameterInfo.layout' to '${message}'
+2020-04-20 09:15:55.5338 Debug Setting 'DatabaseParameterInfo.name' to '@stacktrace'
+2020-04-20 09:15:55.5338 Debug Setting 'DatabaseParameterInfo.layout' to '${exception:stacktrace}'
+2020-04-20 09:15:55.5338 Debug Setting 'ExceptionLayoutRenderer.Format' to 'stacktrace'
+2020-04-20 09:15:55.5338 Debug Setting 'DatabaseParameterInfo.name' to '@allxml'
+2020-04-20 09:15:55.5338 Debug Setting 'DatabaseParameterInfo.layout' to '${identity}'
+2020-04-20 09:15:55.5338 Info Adding target DatabaseTarget(Name=databaselog)
+2020-04-20 09:15:55.5338 Debug Registered target databaselog: NLog.Targets.DatabaseTarget
+2020-04-20 09:15:55.5708 Debug Watching path 'C:\Source\FLovers\FLovers\Flovers.Web' filter 'NLog.config' for changes.
+2020-04-20 09:15:55.5708 Debug --- NLog configuration dump ---
+2020-04-20 09:15:55.5708 Debug Targets:
+2020-04-20 09:15:55.5708 Debug ColoredConsole Target[consolelog]
+2020-04-20 09:15:55.5708 Debug File Target[filelog]
+2020-04-20 09:15:55.5708 Debug EventLog Target[eventlog]
+2020-04-20 09:15:55.5708 Debug Database Target[databaselog]
+2020-04-20 09:15:55.5708 Debug Rules:
+2020-04-20 09:15:55.5808 Debug logNamePattern: (:All) levels: [ Info Warn Error Fatal ] appendTo: [ filelog ]
+2020-04-20 09:15:55.5808 Debug logNamePattern: (:All) levels: [ Info Warn Error Fatal ] appendTo: [ databaselog ]
+2020-04-20 09:15:55.5808 Debug --- End of NLog configuration dump ---
+2020-04-20 09:15:55.5808 Info LogManager.ThrowExceptions = true can crash the application! Use only for unit-testing and last resort troubleshooting.
+2020-04-20 09:15:55.5988 Info Found 61 configuration items
+2020-04-20 09:15:55.5988 Debug Unused target checking is started... Rule Count: 2, Target Count: 4
+2020-04-20 09:15:55.5988 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: consolelog
+2020-04-20 09:15:55.5988 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: eventlog
+2020-04-20 09:15:55.5988 Debug Unused target checking is completed. Total Rule Count: 2, Total Target Count: 4, Unused Target Count: 2
+2020-04-20 09:15:55.6278 Error EventLogTarget(Name=eventlog): Error when connecting to EventLog. Source=WCF in Log=Application Exception: System.Security.SecurityException: The source was not found, but some or all event logs could not be searched.  Inaccessible logs: Security, State.
+   at System.Diagnostics.EventLog.FindSourceRegistration(String source, String machineName, Boolean readOnly, Boolean wantToCreate)
+   at System.Diagnostics.EventLog.SourceExists(String source, String machineName, Boolean wantToCreate)
+   at NLog.Targets.EventLogTarget.EventLogWrapper.SourceExists(String source, String machineName)
+   at NLog.Targets.EventLogTarget.CreateEventSourceIfNeeded(String fixedSource, Boolean alwaysThrowError)
+The Zone of the assembly that failed was:
+MyComputer
+2020-04-20 09:15:55.6278 Error EventLog Target[eventlog]: Error initializing target Exception: System.Security.SecurityException: The source was not found, but some or all event logs could not be searched.  Inaccessible logs: Security, State.
+   at System.Diagnostics.EventLog.FindSourceRegistration(String source, String machineName, Boolean readOnly, Boolean wantToCreate)
+   at System.Diagnostics.EventLog.SourceExists(String source, String machineName, Boolean wantToCreate)
+   at NLog.Targets.EventLogTarget.EventLogWrapper.SourceExists(String source, String machineName)
+   at NLog.Targets.EventLogTarget.CreateEventSourceIfNeeded(String fixedSource, Boolean alwaysThrowError)
+   at NLog.Targets.EventLogTarget.InitializeTarget()
+   at NLog.Targets.Target.Initialize(LoggingConfiguration configuration)
+The Zone of the assembly that failed was:
+MyComputer

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Web;
 
-namespace Flovers.Web.Utilities
+namespace FLovers.WCF.Utilities
 {
     public class ChannelFactoryManager : IDisposable
     {

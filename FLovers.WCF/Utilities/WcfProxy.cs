@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net;
 using System.ServiceModel;
 using System.ServiceModel.Configuration;
-using System.Web;
 using System.Web.Configuration;
+using FLovers.Log.Services.Logging;
 
-namespace Flovers.Web.Utilities
+namespace FLovers.WCF.Utilities
 {
     public class WcfProxy
     {
@@ -58,6 +57,7 @@ namespace Flovers.Web.Utilities
             }
             catch (Exception ex)
             {
+                ErrorHandler.LogException(ex);
                 throw;
             }
             finally

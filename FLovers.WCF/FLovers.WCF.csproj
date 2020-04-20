@@ -93,6 +93,8 @@
       <DependentUpon>ProductService.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\ChannelFactoryManager.cs" />
+    <Compile Include="Utilities\WcfProxy.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
