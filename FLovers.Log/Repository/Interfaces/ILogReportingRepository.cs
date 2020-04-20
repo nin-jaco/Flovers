@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using FLovers.Log.Models;
 
 namespace FLovers.Log.Repository.Interfaces
 {

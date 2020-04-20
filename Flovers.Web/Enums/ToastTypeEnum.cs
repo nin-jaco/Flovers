@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Flovers.Web.Enums
+﻿namespace Flovers.Web.Enums
 {
     public enum ToastTypeEnum
     {

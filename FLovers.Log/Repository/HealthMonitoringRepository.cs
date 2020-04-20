@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Linq;
-using FLovers.Log.Models;
 using FLovers.Log.Repository.Entities;
 using FLovers.Log.Repository.Interfaces;
 

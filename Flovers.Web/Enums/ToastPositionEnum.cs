@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Flovers.Web.Enums
+﻿namespace Flovers.Web.Enums
 {
+    /// <summary>
+    /// Web forms implementation of Toastr - being able to call from code behind
+    /// </summary>
     public enum ToastPositionEnum
     {
         TopRight = 0,

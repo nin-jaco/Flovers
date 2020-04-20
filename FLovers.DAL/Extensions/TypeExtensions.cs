@@ -4,6 +4,9 @@ using System.Reflection;
 
 namespace FLovers.DAL.Extensions
 {
+    /// <summary>
+    /// Used in the mapping.  Sort of an AutoMapper
+    /// </summary>
     public static class TypeExtensions
     {
         public static bool IsNonStringEnumerable(this PropertyInfo pi)

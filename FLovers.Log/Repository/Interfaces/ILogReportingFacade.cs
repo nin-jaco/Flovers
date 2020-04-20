@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using FLovers.Log.Repository;
 
-namespace FLovers.Log.Models.Interfaces
+namespace FLovers.Log.Repository.Interfaces
 {
     /// <summary>
     /// This interface provides a facade over all of our LogReport repositories

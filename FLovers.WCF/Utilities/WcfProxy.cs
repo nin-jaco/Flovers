@@ -9,6 +9,9 @@ using FLovers.Log.Services.Logging;
 
 namespace FLovers.WCF.Utilities
 {
+    /// <summary>
+    /// a very nifty old school WCF channel mapper. Avoids consuming the service after any change
+    /// </summary>
     public class WcfProxy
     {
         private static readonly ChannelFactoryManager FactoryManager = new ChannelFactoryManager();

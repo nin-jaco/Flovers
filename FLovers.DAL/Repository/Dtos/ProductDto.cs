@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
 using FLovers.DAL.Repository.Entities;
 using Newtonsoft.Json;

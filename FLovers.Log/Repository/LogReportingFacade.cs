@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using FLovers.Log.Models;
-using FLovers.Log.Models.Interfaces;
 using FLovers.Log.Repository.Entities;
 using FLovers.Log.Repository.Interfaces;
 

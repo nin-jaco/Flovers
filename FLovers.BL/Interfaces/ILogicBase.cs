@@ -1,5 +1,4 @@
-﻿using FLovers.Shared.BaseClasses;
-using FLovers.Shared.RequestObjects;
+﻿using FLovers.Shared.RequestObjects;
 using FLovers.Shared.ResponseObjects;
 
 namespace FLovers.BL.Interfaces

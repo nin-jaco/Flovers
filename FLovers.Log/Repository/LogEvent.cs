@@ -2,6 +2,9 @@
 
 namespace FLovers.Log.Repository
 {
+    /// <summary>
+    /// Generic class that represents an item that will be logged
+    /// </summary>
     public class LogEvent
     {
         private string _id = string.Empty;

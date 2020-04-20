@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
+﻿using System.ServiceModel;
 using System.ServiceModel.Activation;
-using System.Text;
-using FLovers.BL.BaseClasses;
 using FLovers.BL.Logic;
 using FLovers.DAL.Repository.Dtos;
 using FLovers.Log.Services.Wcf;

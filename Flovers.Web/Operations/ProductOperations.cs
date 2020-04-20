@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Web;
+﻿using System.Collections.Generic;
 using FLovers.DAL.Repository.Dtos;
-using FLovers.DAL.Repository.Entities;
 using FLovers.Shared.BaseClasses;
 using FLovers.Shared.RequestObjects;
 using FLovers.Shared.ResponseObjects;
 using FLovers.WCF;
 using FLovers.WCF.Utilities;
-using Serialize.Linq.Nodes;
 
 namespace Flovers.Web.Operations
 {

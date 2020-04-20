@@ -12,6 +12,10 @@ using FLovers.Shared.RequestObjects;
 
 namespace FLovers.DAL.Repository.BaseClasses
 {
+    /// <summary>
+    /// Facade for the usual crud operations
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
     public class Repository<TEntity> : IRepository<TEntity>, IDisposable where TEntity : class,  new()
     {
         public IContext<TEntity> Context { get; protected set; }

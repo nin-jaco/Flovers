@@ -1,6 +1,5 @@
 ﻿using System.ServiceModel;
 using FLovers.DAL.Repository.Dtos;
-using FLovers.Shared.BaseClasses;
 using FLovers.WCF.BaseService;
 
 namespace FLovers.WCF

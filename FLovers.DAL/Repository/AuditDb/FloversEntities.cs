@@ -9,6 +9,10 @@ using AuditEvent = FLovers.DAL.Repository.Entities.AuditEvent;
 
 namespace FLovers.DAL.Repository.AuditDb
 {
+    
+    /// <summary>
+    /// Implementing Entity AUdit
+    /// </summary>
     [AuditDbContext(Mode = AuditOptionMode.OptOut, IncludeEntityObjects = true, AuditEventType = "{database}_{context}")]
     public partial class FLoversEntities : AuditDbContext
     {

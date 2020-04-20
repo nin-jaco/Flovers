@@ -13,6 +13,11 @@ using FLovers.Shared.ResponseObjects;
 
 namespace FLovers.BL.BaseClasses
 {
+    /// <summary>
+    /// Generic Logic Class that can be used for most crud operations
+    /// </summary>
+    /// <typeparam name="TDto"></typeparam>
+    /// <typeparam name="TEntity"></typeparam>
     public class LogicBase<TDto, TEntity> : ILogicBase<TDto, TEntity> where TDto : class, new() where TEntity : class, new()
     {
         public Repository<TEntity> Repository { get; set; } = new Repository<TEntity>();
