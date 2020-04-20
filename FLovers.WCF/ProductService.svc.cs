@@ -71,5 +71,10 @@ namespace FLovers.WCF
         {
             return BranchLogic.AssignAProductToAStore(branchId, productId, requestBase);
         }
+
+        public List<ProductDto> GetAllByStoreId(int branchId, RequestBase requestBase)
+        {
+            return BranchLogic.GetAllByStoreId(branchId, requestBase);
+        }
     }
 }

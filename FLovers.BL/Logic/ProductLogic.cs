@@ -66,5 +66,49 @@ namespace FLovers.BL.Logic
                 return response;
             }
         }
+
+        public virtual List<ProductDto> GetAllByStoreId(int branchId, RequestBase requestBase)
+        {
+            var results = new List<ProductDto>();
+            try
+            {
+                BranchRepository = new Repository<Branch>();
+                var branch = BranchRepository.Get(new GetByIdRequest<Branch>(branchId, requestBase));
+                if (branch != null)
+                {
+                    var list = branch.Products;
+                    if (list.Any())
+                    {
+                        foreach (var item in list)
+                        {
+                            results.Add(MapToDto(item));
+                        }
+                    }
+                }
+
+                return results;
+            }
+            catch (DbEntityValidationException dbx)
+            {
+                // Retrieve the error messages as a list of strings.
+                var errorMessages = dbx.EntityValidationErrors
+                    .SelectMany(x => x.ValidationErrors)
+                    .Select(x => x.ErrorMessage);
+
+                // Join the list to a single string.
+                var fullErrorMessage = string.Join("; ", errorMessages);
+
+                // Combine the original exception message with the new one.
+                var exceptionMessage = string.Concat(dbx.Message, " The validation errors are: ", fullErrorMessage);
+
+                // Throw a new DbEntityValidationException with the improved exception message.
+                throw new System.Exception(exceptionMessage);
+            }
+            catch (System.Exception ex)
+            {
+                ErrorHandler.LogException(ex);
+                return null;
+            }
+        }
     }
 }

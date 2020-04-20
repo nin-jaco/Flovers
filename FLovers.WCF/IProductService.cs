@@ -17,5 +17,8 @@ namespace FLovers.WCF
     {
         [OperationContract]
         ResponseBase AssignAProductToAStore(int branchId, int productId, RequestBase requestBase);
+
+        [OperationContract]
+        List<ProductDto> GetAllByStoreId(int branchId, RequestBase requestBase);
     }
 }

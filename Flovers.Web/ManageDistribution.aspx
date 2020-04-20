@@ -35,8 +35,8 @@
     <telerik:RadDropDownList runat="server" ID="ddlBranches" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="ddlBranches_OnSelectedIndexChanged"></telerik:RadDropDownList>
     <div class="demo-container size-narrow" id="DemoContainer1" runat="server">
         <div class="wrapper">
-            <telerik:RadListBox RenderMode="Lightweight" runat="server" ID="RadListBoxSource" Height="200px" Width="230px"
-                AllowTransfer="true" TransferToID="RadListBoxDestination"
+            <telerik:RadListBox RenderMode="Lightweight" runat="server" ID="RadListBoxSource" Height="200px" Width="230px" DataTextField="Name" DataValueField="Id"
+                AllowTransfer="true" TransferToID="RadListBoxDestination" AutoPostBackOnTransfer="True" OnTransferred="RadListBoxSource_OnTransferred"
                  ButtonSettings-AreaWidth="35px" >
             </telerik:RadListBox>
             <telerik:RadListBox RenderMode="Lightweight" runat="server" ID="RadListBoxDestination" Height="200px" Width="230px"

@@ -47,10 +47,9 @@
                         UniqueName="Name">
                         <HeaderStyle Width="150px" />
                     </telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="WeightedItem" HeaderText="Weighted Item" SortExpression="WeightedItem"
-                        UniqueName="WeightedItem">
-                        <HeaderStyle Width="150px" />
-                    </telerik:GridBoundColumn>
+                    <telerik:GridCheckBoxColumn UniqueName="WeightedItem" HeaderText="Weighted Item" DataField="WeightedItem"
+                                                AllowSorting="true">
+                    </telerik:GridCheckBoxColumn>
                     <telerik:GridNumericColumn DataField="SuggestedSellingPrice" HeaderText="Suggested Selling Price" SortExpression="SuggestedSellingPrice"
                         UniqueName="SuggestedSellingPrice" >
                         <HeaderStyle Width="150px" />

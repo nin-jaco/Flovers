@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using FLovers.DAL.Repository.Dtos;
+using FLovers.Shared.BaseClasses;
 using FLovers.Shared.RequestObjects;
 using FLovers.Shared.ResponseObjects;
 using FLovers.WCF;
@@ -43,5 +44,7 @@ namespace Flovers.Web.Operations
             return Proxy.PerformRemote<IBranchService, GetByIdResponse<BranchDto>>(x =>
                 x.GetById(new GetByIdRequest<BranchDto>(id, UserOperations.GetRequestBaseFromSession())));
         }
+
+        
     }
 }

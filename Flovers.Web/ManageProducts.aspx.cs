@@ -111,7 +111,7 @@ namespace Flovers.Web
                 var result = ProductOperations.Delete(product);
                 if (result.IsSuccess)
                 {
-                    this.ShowToast(ToastTypeEnum.Success, "Successfully delete Item", "Success");
+                    this.ShowToast(ToastTypeEnum.Success, "Successfully deleted Item", "Success");
                     return;
                 }
                 ShowErrorMessage(result.ErrorMessage);

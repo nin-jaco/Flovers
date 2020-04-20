@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
+﻿using System.ServiceModel;
 using FLovers.DAL.Repository.Dtos;
+using FLovers.Shared.BaseClasses;
 using FLovers.WCF.BaseService;
 
 namespace FLovers.WCF

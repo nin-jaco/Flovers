@@ -66,5 +66,7 @@ namespace FLovers.WCF
         {
             return BranchLogic.GetAllPagedAndFiltered(request);
         }
+
+        
     }
 }

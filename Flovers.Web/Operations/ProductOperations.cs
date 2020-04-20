@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using FLovers.DAL.Repository.Dtos;
+using FLovers.DAL.Repository.Entities;
 using FLovers.Shared.BaseClasses;
 using FLovers.Shared.RequestObjects;
 using FLovers.Shared.ResponseObjects;
 using FLovers.WCF;
 using FLovers.WCF.Utilities;
+using Serialize.Linq.Nodes;
 
 namespace Flovers.Web.Operations
 {
@@ -49,6 +52,12 @@ namespace Flovers.Web.Operations
         {
             return Proxy.PerformRemote<IProductService, ResponseBase>(x =>
                 x.AssignAProductToAStore(branchId, productId, UserOperations.GetRequestBaseFromSession()));
+        }
+
+        public static List<ProductDto> GetAllByStoreId(int idBranch)
+        {
+            return Proxy.PerformRemote<IProductService, List<ProductDto>>(x =>
+                x.GetAllByStoreId(idBranch, UserOperations.GetRequestBaseFromSession()));
         }
     }
 }
