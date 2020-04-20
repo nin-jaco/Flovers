@@ -21,22 +21,22 @@ namespace Flovers.Web.Operations
                 x.GetAll(new GetAllRequest(UserOperations.GetRequestBaseFromSession())));
         }
 
-        public static CreateResponse<ProductDto> Create(ProductDto branch)
+        public static CreateResponse<ProductDto> Create(ProductDto product)
         {
             return Proxy.PerformRemote<IProductService, CreateResponse<ProductDto>>(x =>
-                x.Create(new CreateRequest<ProductDto>(branch, UserOperations.GetRequestBaseFromSession())));
+                x.Create(new CreateRequest<ProductDto>(product, UserOperations.GetRequestBaseFromSession())));
         }
 
-        public static UpdateResponse<ProductDto> Update(ProductDto branch)
+        public static UpdateResponse<ProductDto> Update(ProductDto product)
         {
             return Proxy.PerformRemote<IProductService, UpdateResponse<ProductDto>>(x =>
-                x.Update(new UpdateRequest<ProductDto>(branch.Id, branch, UserOperations.GetRequestBaseFromSession())));
+                x.Update(new UpdateRequest<ProductDto>(product.Id, product, UserOperations.GetRequestBaseFromSession())));
         }
 
-        public static DeleteResponse<ProductDto> Delete(ProductDto branch)
+        public static DeleteResponse<ProductDto> Delete(ProductDto product)
         {
             return Proxy.PerformRemote<IProductService, DeleteResponse<ProductDto>>(x =>
-                x.Delete(new DeleteRequest<ProductDto>(branch, UserOperations.GetRequestBaseFromSession())));
+                x.Delete(new DeleteRequest<ProductDto>(product, UserOperations.GetRequestBaseFromSession())));
         }
 
         public static GetByIdResponse<ProductDto> GetById(int id)

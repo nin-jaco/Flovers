@@ -51,7 +51,7 @@ namespace Flovers.Web.Operations
         public static RequestBase GetRequestBaseFromSession()
         {
 
-            return HttpContext.Current.Session["RequestBase"] as RequestBase ?? new RequestBase
+            return new RequestBase
             {
                 IdBranch = 1,
                 BranchName = "HeadOffice",

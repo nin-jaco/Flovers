@@ -55,9 +55,9 @@ namespace FLovers.DAL.Repository.BaseClasses
 
         public virtual TEntity Add(CreateRequest<TEntity> request)
         {
-            Context.DbSet.Add(request.Item);
+            var result = Context.DbSet.Add(request.Item);
             SaveChanges(request.RequestBase);
-            return request.Item;
+            return result;
         }
 
         public virtual TEntity Remove(DeleteRequest<TEntity> request)

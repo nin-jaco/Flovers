@@ -9,12 +9,21 @@ using AuditEvent = FLovers.DAL.Repository.Entities.AuditEvent;
 
 namespace FLovers.DAL.Repository.AuditDb
 {
+    [AuditDbContext(Mode = AuditOptionMode.OptOut, IncludeEntityObjects = true, AuditEventType = "{database}_{context}")]
     public partial class FLoversEntities : AuditDbContext
     {
 
         public override void OnScopeCreated(AuditScope auditScope)
         {
+            Audit.EntityFramework.Configuration.Setup()
+                .ForContext<FLoversEntities>(config => config
+                    .IncludeEntityObjects()
+                    .AuditEventType("{context}:{database}"))
+                .UseOptOut()
+                .IgnoreAny(t => t.Name.Contains("Audit"));
+
             Database.BeginTransaction();
+
         }
 
         public override void OnScopeSaving(AuditScope auditScope)

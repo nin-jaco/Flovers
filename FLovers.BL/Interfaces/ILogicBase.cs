@@ -21,7 +21,7 @@ namespace FLovers.BL.Interfaces
 
         SearchForResponse<TDto> SearchFor(SearchForRequest<TDto> request);
 
-        TEntity MapToModel(TDto dto, RequestBase requestBase);
-        TDto MapToDto(TEntity model, RequestBase requestBase);
+        TEntity MapToModel(TDto dto);
+        TDto MapToDto(TEntity model);
     }
 }

@@ -16,8 +16,9 @@ namespace Flovers.Web
         {
             if (!IsPostBack)
             {
-                ddlBranches.DataSource = BranchOperations.GetAll().ItemList;
+                ddlBranches.DataSource = BranchOperations.GetAll()?.ItemList;
                 ddlBranches.DataBind();
+                ddlBranches.SelectedIndex = 0;
             }
         }
 
@@ -29,7 +30,9 @@ namespace Flovers.Web
 
         protected void ddlBranches_OnSelectedIndexChanged(object sender, DropDownListEventArgs e)
         {
-            throw new NotImplementedException();
+            var allProducts = ProductOperations.GetAll()?.ItemList;
+            
+            RadListBoxSource.DataSource = 
         }
     }
 }

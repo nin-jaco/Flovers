@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FLovers.BL.Interfaces;
 using FLovers.BL.Utilities;
 using FLovers.DAL.Repository.BaseClasses;
 using FLovers.Log.Services.Logging;
-using FLovers.Shared.BaseClasses;
 using FLovers.Shared.Enums;
 using FLovers.Shared.Extensions;
 using FLovers.Shared.RequestObjects;
@@ -25,10 +22,10 @@ namespace FLovers.BL.BaseClasses
             var response = new CreateResponse<TDto>();
             try
             {
-                var result = Repository.Add(new CreateRequest<TEntity>(MapToModel(request.Item, request.RequestBase)));
+                var result = Repository.Add(new CreateRequest<TEntity>(MapToModel(request.Item), request.RequestBase));
                 if (result != null)
                 {
-                    response.Item = MapToDto(result, request.RequestBase);
+                    response.Item = MapToDto(result);
                     response.IsSuccess = true;
                     return response;
                 }
@@ -68,10 +65,10 @@ namespace FLovers.BL.BaseClasses
             var response = new DeleteResponse<TDto>();
             try
             {
-                var result = Repository.Remove(new DeleteRequest<TEntity>(MapToModel(request.Item, request.RequestBase), request.RequestBase));
+                var result = Repository.Remove(new DeleteRequest<TEntity>(MapToModel(request.Item), request.RequestBase));
                 if (result != null)
                 {
-                    response.Item = MapToDto(result, request.RequestBase);
+                    response.Item = MapToDto(result);
                     response.IsSuccess = true;
                     return response;
                 }
@@ -111,10 +108,10 @@ namespace FLovers.BL.BaseClasses
             var response = new UpdateResponse<TDto>();
             try
             {
-                var result = Repository.Update(new UpdateRequest<TEntity>(request.Key, MapToModel(request.Item, request.RequestBase)));
+                var result = Repository.Update(new UpdateRequest<TEntity>(request.Key, MapToModel(request.Item)));
                 if (result != null)
                 {
-                    response.Item = MapToDto(result, request.RequestBase);
+                    response.Item = MapToDto(result);
                     response.IsSuccess = true;
                     return response;
                 }
@@ -158,8 +155,13 @@ namespace FLovers.BL.BaseClasses
                 var models = Repository.GetAll(request);
                 if (models.Any())
                 {
-                    results.AddRange(models.Select(model => MapToDto(model, request.RequestBase)));
+                    foreach (var model in models)
+                    {
+                        results.Add(MapToDto(model));
+                    }
                     response.ItemList = results;
+                    response.IsSuccess = true;
+                    return response;
                 }
 
                 response.ErrorMessage = "Search yielded no results.";
@@ -201,7 +203,7 @@ namespace FLovers.BL.BaseClasses
                 var result = Repository.Get(new GetByIdRequest<TEntity>(request.Key));
                 if (result != null)
                 {
-                    response.Item = MapToDto(result, request.RequestBase);
+                    response.Item = MapToDto(result);
                     response.IsSuccess = true;
                     return response;
                 }
@@ -244,8 +246,7 @@ namespace FLovers.BL.BaseClasses
                 if (Repository != null)
                 {
                     response.Item = MapToDto(
-                        Repository.SearchFirst(new SearchFirstRequest<TEntity>(request.Predicate, request.RequestBase)), request.RequestBase);
-                    //Repository.SearchFirst(new SearchFirstRequest<TEntity>(PredicateExtensions.ConvertTypeExpression<TDto, TEntity>(expression.Body.), request.RequestBase)), request.RequestBase);
+                        Repository.SearchFirst(new SearchFirstRequest<TEntity>(request.Predicate, request.RequestBase)));
                     response.IsSuccess = true;
                     return response;
                 }
@@ -289,7 +290,7 @@ namespace FLovers.BL.BaseClasses
                 var models = Repository.SearchFor(new SearchForRequest<TEntity>(request.Predicate, request.RequestBase)).ToList();
                 if (models.Any())
                 {
-                    results.AddRange(models.Select(model => MapToDto(model, request.RequestBase)));
+                    results.AddRange(models.Select(model => MapToDto(model)));
                     response.ItemList = results;
                 }
 
@@ -335,8 +336,8 @@ namespace FLovers.BL.BaseClasses
         }
 
 
-        public TEntity MapToModel(TDto dto, RequestBase requestBase) => PropertyCopier<TDto, TEntity>.MapToModel(dto);
-        public TDto MapToDto(TEntity model, RequestBase requestBase) => PropertyCopier<TDto, TEntity>.MapToDto(model);
+        public TEntity MapToModel(TDto dto) => PropertyCopier<TDto, TEntity>.MapToModel(dto);
+        public TDto MapToDto(TEntity model) => PropertyCopier<TDto, TEntity>.MapToDto(model);
 
     }
 }

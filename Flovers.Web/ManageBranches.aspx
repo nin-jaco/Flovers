@@ -8,8 +8,6 @@
                 <Columns>
                     <telerik:LayoutColumn Span="10" SpanMd="12" SpanSm="12" SpanXs="12">
                         <h1>Manage Branches.</h1>
-                        <h2>H2 Title, font size 30 px.</h2>
-                        <telerik:RadButton runat="server" ID="RadButton0" Text="Button" ButtonType="SkinnedButton"></telerik:RadButton>
                     </telerik:LayoutColumn>
                     <telerik:LayoutColumn Span="2" HiddenMd="true" HiddenSm="true" HiddenXs="true">
                         <img src="images/Thumbnails/Desert.jpg" />
@@ -20,6 +18,18 @@
     </telerik:RadPageLayout>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+    <br />
+    <telerik:RadAjaxManager runat="server" ID="RadAjaxManager1" DefaultLoadingPanelID="RadAjaxLoadingPanel1">
+        <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="RadGrid1">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RadGrid1" />
+                    <telerik:AjaxUpdatedControl ControlID="RadWindowManager1" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+        </AjaxSettings>
+    </telerik:RadAjaxManager>
+    <telerik:RadWindowManager RenderMode="Lightweight" ID="RadWindowManager1" runat="server" />
     <telerik:RadAjaxPanel ID="RadAjaxPanel1" ClientEvents-OnRequestStart="onRequestStart" runat="server" CssClass="grid_wrapper">
         <telerik:RadGrid ID="RadGrid1" runat="server" PageSize="10" PagerStyle-PageButtonCount="5"
             OnNeedDataSource="RadGrid1_OnNeedDataSource" OnItemCreated="RadGrid1_OnItemCreated" OnItemDataBound="RadGrid1_OnItemDataBound"
