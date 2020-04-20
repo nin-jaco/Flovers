@@ -18,8 +18,6 @@
     </telerik:RadPageLayout>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
-    <telerik:RadScriptManager runat="server" ID="RadScriptManager1" />
-    <telerik:RadSkinManager ID="RadSkinManager1" runat="server" ShowChooser="true" />
     <telerik:RadAjaxManager runat="server" ID="RadAjaxManager1">
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="ConfigurationPanel1">

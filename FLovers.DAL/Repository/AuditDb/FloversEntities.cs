@@ -20,7 +20,8 @@ namespace FLovers.DAL.Repository.AuditDb
                     .IncludeEntityObjects()
                     .AuditEventType("{context}:{database}"))
                 .UseOptOut()
-                .IgnoreAny(t => t.Name.Contains("Audit"));
+                .IgnoreAny(t => t.Name.Contains("Audit"))
+                .Ignore(typeof(Branch_Product));
 
             Database.BeginTransaction();
 

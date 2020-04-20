@@ -17,7 +17,7 @@ namespace FLovers.DAL.Repository.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.Branches = new HashSet<Branch>();
+            this.Branch_Product = new HashSet<Branch_Product>();
         }
     
         public int Id { get; set; }
@@ -26,6 +26,6 @@ namespace FLovers.DAL.Repository.Entities
         public decimal SuggestedSellingPrice { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Branch> Branches { get; set; }
+        public virtual ICollection<Branch_Product> Branch_Product { get; set; }
     }
 }

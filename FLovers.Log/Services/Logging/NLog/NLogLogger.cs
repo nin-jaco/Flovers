@@ -30,7 +30,12 @@ namespace FLovers.Log.Services.Logging.NLog
 
         public void Error(string message)
         {
-            Logger.Error(message);
+            try
+            {
+                Logger.Error(message);
+            }
+            catch(Exception ex)
+            { }
         }
 
         public void Error(Exception x)

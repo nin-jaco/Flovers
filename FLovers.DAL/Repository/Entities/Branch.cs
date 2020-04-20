@@ -17,7 +17,7 @@ namespace FLovers.DAL.Repository.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Branch()
         {
-            this.Products = new HashSet<Product>();
+            this.Branch_Product = new HashSet<Branch_Product>();
         }
     
         public int Id { get; set; }
@@ -26,6 +26,6 @@ namespace FLovers.DAL.Repository.Entities
         public Nullable<System.DateTime> OpenDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Branch_Product> Branch_Product { get; set; }
     }
 }

@@ -46,14 +46,20 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.7.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="Serialize.Linq, Version=1.2.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Serialize.Linq.1.2.4\lib\net45\Serialize.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -73,6 +79,9 @@
       <DependentUpon>FloversEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\Entities\Branch.cs">
+      <DependentUpon>FloversEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Entities\Branch_Product.cs">
       <DependentUpon>FloversEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\Entities\CustomAuditEvent.cs">
@@ -120,7 +129,11 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Repository\Scripts\7_Create_Branches.sql" />
+    <Content Include="Repository\Scripts\8_CreateTableProducts.sql" />
+    <Content Include="Repository\Scripts\9_Create_Branch_products.sql" />
     <None Include="App.Config" />
+    <Content Include="NLog.config" />
     <None Include="packages.config" />
     <None Include="Repository\Entities\FloversEntityModel.edmx.diagram">
       <DependentUpon>FloversEntityModel.edmx</DependentUpon>
@@ -137,7 +150,8 @@
       <DependentUpon>FloversEntityModel.edmx</DependentUpon>
       <LastGenOutput>FloversEntityModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Repository\Scripts\1_CreateBasicTable.sql" />
+    <Content Include="Repository\Scripts\10_Create_EntireDatabase.sql" />
+    <Content Include="Repository\Scripts\1_CreateDataBase.sql" />
     <Content Include="Repository\Scripts\2_aspnet_SchemaVersions.sql" />
     <Content Include="Repository\Scripts\3_aspnet_Logevents.sql" />
     <Content Include="Repository\Scripts\4_elmah.sql" />

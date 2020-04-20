@@ -5,14 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="8c6099e01d0a4c5e99feab72c5c4e76f" Name="Diagram1">
-        <EntityTypeShape EntityType="FLoversModel.Branch" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="FLoversModel.Product" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="FLoversModel.Branch_Product" ManuallyRouted="false" />
         <EntityTypeShape EntityType="FLoversModel.AuditEvent" Width="1.5" PointX="0.75" PointY="4.125" />
         <EntityTypeShape EntityType="FLoversModel.CustomAuditEvent" Width="1.5" PointX="3" PointY="4.75" />
         <EntityTypeShape EntityType="FLoversModel.EntityAuditEvent" Width="1.5" PointX="3" PointY="7.125" />
         <AssociationConnector Association="FLoversModel.FK_AuditEvents_CustomAuditEvents" />
         <AssociationConnector Association="FLoversModel.FK_AuditEvents_EntityAuditEvents" />
+        <EntityTypeShape EntityType="FLoversModel.Branch_Product" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="FLoversModel.Branch" Width="1.5" PointX="0.75" PointY="0.875" />
+        <EntityTypeShape EntityType="FLoversModel.Product" Width="1.5" PointX="0.75" PointY="10.875" />
+        <AssociationConnector Association="FLoversModel.FK_Branch_Product_Branches" />
+        <AssociationConnector Association="FLoversModel.FK_Branch_Product_Products" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

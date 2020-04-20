@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using FLovers.BL.BaseClasses;
 using FLovers.DAL.Repository.BaseClasses;
@@ -19,24 +20,20 @@ namespace FLovers.BL.Logic
     public class ProductLogic : LogicBase<ProductDto, Product>
     {
         private Repository<Branch> BranchRepository { get; set; }
+        private Repository<Branch_Product> BranchProductRepository { get; set; } = new Repository<Branch_Product>();
         public virtual ResponseBase AssignAProductToAStore(int branchId, int productId, RequestBase requestBase)
         {
             var response = new ResponseBase();
             try
             {
-                BranchRepository = new Repository<Branch>();
-                var product = Repository.Get(new GetByIdRequest<Product>(productId, requestBase));
-                if (product != null)
+                var result = BranchProductRepository.Add(new CreateRequest<Branch_Product>(new Branch_Product
+                    {BranchId = branchId, ProductId = productId}, requestBase));
+                if (result != null)
                 {
-                    var branch = BranchRepository.Get(new GetByIdRequest<Branch>(branchId, requestBase));
-                    if (branch != null)
-                    {
-                        branch.Products.Add(product);
-                        response.IsSuccess = true;
-                        return response;
-                    }
+                    response.IsSuccess = true;
+                    return response;
                 }
-
+                
                 response.ErrorMessage = "Please refer to logs for error.";
                 response.IsSuccess = false;
                 return response;
@@ -76,12 +73,12 @@ namespace FLovers.BL.Logic
                 var branch = BranchRepository.Get(new GetByIdRequest<Branch>(branchId, requestBase));
                 if (branch != null)
                 {
-                    var list = branch.Products;
+                    var list = branch.Branch_Product;
                     if (list.Any())
                     {
                         foreach (var item in list)
                         {
-                            results.Add(MapToDto(item));
+                            results.Add(MapToDto(item.Product));
                         }
                     }
                 }

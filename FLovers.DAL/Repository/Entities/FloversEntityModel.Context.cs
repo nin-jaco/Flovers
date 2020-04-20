@@ -25,10 +25,11 @@ namespace FLovers.DAL.Repository.Entities
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Branch> Branches { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<AuditEvent> AuditEvents { get; set; }
         public virtual DbSet<CustomAuditEvent> CustomAuditEvents { get; set; }
         public virtual DbSet<EntityAuditEvent> EntityAuditEvents { get; set; }
+        public virtual DbSet<Branch_Product> Branch_Product { get; set; }
+        public virtual DbSet<Branch> Branches { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
     }
 }
