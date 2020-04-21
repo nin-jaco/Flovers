@@ -54,6 +54,7 @@ namespace Flovers.Web
                 var product = new ProductDto();
                 editableItem.UpdateValues(product);
                 product.Id = productId;
+                if (product.WeightedItem == null) product.WeightedItem = false;
                 var result = ProductOperations.Update(product);
                 if (result.IsSuccess)
                 {
@@ -84,6 +85,7 @@ namespace Flovers.Web
                 var editableItem = ((GridEditableItem)e.Item);
                 var product = new ProductDto();
                 editableItem.UpdateValues(product);
+                if (product.WeightedItem == null) product.WeightedItem = false;
                 var result = ProductOperations.Create(product);
                 if (result.IsSuccess)
                 {
@@ -108,6 +110,7 @@ namespace Flovers.Web
                 var product = new ProductDto();
                 editableItem.UpdateValues(product);
                 product.Id = productId;
+                if (product.WeightedItem == null) product.WeightedItem = false;
                 var result = ProductOperations.Delete(product);
                 if (result.IsSuccess)
                 {
