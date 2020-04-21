@@ -39,9 +39,9 @@ namespace Flovers.Web
         private void SetDataSources()
         {
             var allProducts = ProductOperations.GetAll()?.ItemList ?? new List<ProductDto>();
-            var branchProducts = ddlBranches.SelectedValue == "0" ? allProducts : ProductOperations.GetAllByStoreId(int.Parse(ddlBranches.SelectedValue)) ?? new List<ProductDto>();
+            var branchProducts = ddlBranches.SelectedValue == "0" ? new List<ProductDto>() : ProductOperations.GetAllByStoreId(int.Parse(ddlBranches.SelectedValue));
 
-            RadListBoxSource.DataSource = branchProducts.Count > 0 ? branchProducts.Where(p => !branchProducts.Contains(p)) : allProducts;
+            RadListBoxSource.DataSource = branchProducts.Count > 0 ? allProducts.Where(p => !branchProducts.Contains(p)) : allProducts;
             RadListBoxSource.DataBind();
             RadListBoxDestination.DataSource = branchProducts;
             RadListBoxDestination.DataBind();
