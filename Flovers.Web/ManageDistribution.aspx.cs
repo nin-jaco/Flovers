@@ -49,6 +49,11 @@ namespace Flovers.Web
 
         protected void RadListBoxSource_OnTransferred(object sender, RadListBoxTransferredEventArgs e)
         {
+            if (ddlBranches.SelectedValue == "0")
+            {
+                ShowErrorMessage("Please select a branch from the dropdown.");
+                return;
+            }
             var itemIds =  new List<int>();
             foreach (var radListBoxItem in e.Items)
             {
