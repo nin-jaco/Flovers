@@ -29,7 +29,7 @@
         </AjaxSettings>
     </telerik:RadAjaxManager>
     <telerik:RadAjaxLoadingPanel runat="server" ID="RadAjaxLoadingPanel1"></telerik:RadAjaxLoadingPanel>
-    Select a Branch from the list below:
+    Select a Branch from the list below:<br />
     <telerik:RadDropDownList runat="server" ID="ddlBranches" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="ddlBranches_OnSelectedIndexChanged"></telerik:RadDropDownList>
     <div class="demo-container size-narrow" id="DemoContainer1" runat="server">
         <div class="wrapper">
@@ -37,7 +37,7 @@
                 AllowTransfer="true" TransferToID="RadListBoxDestination" AutoPostBackOnTransfer="True" OnTransferred="RadListBoxSource_OnTransferred"
                  ButtonSettings-AreaWidth="35px" >
             </telerik:RadListBox>
-            <telerik:RadListBox RenderMode="Lightweight" runat="server" ID="RadListBoxDestination" Height="200px" Width="230px"
+            <telerik:RadListBox RenderMode="Lightweight" runat="server" ID="RadListBoxDestination" Height="200px" Width="230px" DataTextField="Name" DataValueField="Id"
                  ButtonSettings-AreaWidth="35px" >
             </telerik:RadListBox>
         </div>

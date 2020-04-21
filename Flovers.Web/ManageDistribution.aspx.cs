@@ -19,6 +19,7 @@ namespace Flovers.Web
             {
                 ddlBranches.DataSource = BranchOperations.GetAll()?.ItemList;
                 ddlBranches.DataBind();
+                ddlBranches.Items.Insert(0, new DropDownListItem("Please select", "0"));
                 ddlBranches.SelectedIndex = 0;
                 SetDataSources();
             }
@@ -38,7 +39,7 @@ namespace Flovers.Web
         private void SetDataSources()
         {
             var allProducts = ProductOperations.GetAll()?.ItemList ?? new List<ProductDto>();
-            var branchProducts = ProductOperations.GetAllByStoreId(int.Parse(ddlBranches.SelectedValue)) ?? new List<ProductDto>();
+            var branchProducts = ddlBranches.SelectedValue == "0" ? allProducts : ProductOperations.GetAllByStoreId(int.Parse(ddlBranches.SelectedValue)) ?? new List<ProductDto>();
 
             RadListBoxSource.DataSource = branchProducts.Count > 0 ? branchProducts.Where(p => !branchProducts.Contains(p)) : allProducts;
             RadListBoxSource.DataBind();
