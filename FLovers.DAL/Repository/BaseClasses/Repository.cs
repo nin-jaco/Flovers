@@ -33,6 +33,8 @@ namespace FLovers.DAL.Repository.BaseClasses
         public Repository(IContext<TEntity> context)
         {
             Context = context;
+            Context.DbContext.Database.CommandTimeout = 300;
+            DbSet = Context.DbContext.Set<TEntity>();
         }
 
         public virtual TEntity Get(GetByIdRequest<TEntity> request)
