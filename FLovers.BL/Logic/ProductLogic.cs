@@ -5,6 +5,7 @@ using FLovers.BL.BaseClasses;
 using FLovers.DAL.Repository.BaseClasses;
 using FLovers.DAL.Repository.Dtos;
 using FLovers.DAL.Repository.Entities;
+using FLovers.DAL.Repository.Interfaces;
 using FLovers.Log.Services.Logging;
 using FLovers.Shared.BaseClasses;
 using FLovers.Shared.Enums;
@@ -15,8 +16,8 @@ namespace FLovers.BL.Logic
 {
     public class ProductLogic : LogicBase<ProductDto, Product>
     {
-        private Repository<Branch> BranchRepository { get; set; }
-        private Repository<Branch_Product> BranchProductRepository { get; set; } = new Repository<Branch_Product>();
+        private IRepository<Branch> BranchRepository { get; set; }
+        private IRepository<Branch_Product> BranchProductRepository { get; set; } = new Repository<Branch_Product>();
         public virtual ResponseBase AssignAProductToAStore(int branchId, int productId, RequestBase requestBase)
         {
             var response = new ResponseBase();

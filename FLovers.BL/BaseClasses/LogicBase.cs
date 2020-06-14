@@ -5,6 +5,7 @@ using System.Linq;
 using FLovers.BL.Interfaces;
 using FLovers.BL.Utilities;
 using FLovers.DAL.Repository.BaseClasses;
+using FLovers.DAL.Repository.Interfaces;
 using FLovers.Log.Services.Logging;
 using FLovers.Shared.Enums;
 using FLovers.Shared.Extensions;
@@ -20,7 +21,7 @@ namespace FLovers.BL.BaseClasses
     /// <typeparam name="TEntity"></typeparam>
     public class LogicBase<TDto, TEntity> : ILogicBase<TDto, TEntity> where TDto : class, new() where TEntity : class, new()
     {
-        public Repository<TEntity> Repository { get; set; } = new Repository<TEntity>();
+        public IRepository<TEntity> Repository { get; set; } = new Repository<TEntity>();
 
         public virtual CreateResponse<TDto> Create(CreateRequest<TDto> request)
         {
