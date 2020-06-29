@@ -21,14 +21,19 @@ namespace FLovers.BL.BaseClasses
     /// <typeparam name="TEntity"></typeparam>
     public class LogicBase<TDto, TEntity> : ILogicBase<TDto, TEntity> where TDto : class, new() where TEntity : class, new()
     {
-        public IRepository<TEntity> Repository { get; set; } = new Repository<TEntity>();
+        private IRepository<TEntity> _repository; 
+
+        public LogicBase(IRepository<TEntity> repository = null)
+        {
+            _repository = repository ?? new Repository<TEntity>();
+        }
 
         public virtual CreateResponse<TDto> Create(CreateRequest<TDto> request)
         {
             var response = new CreateResponse<TDto>();
             try
             {
-                var result = Repository.Add(new CreateRequest<TEntity>(MapToModel(request.Item), request.RequestBase));
+                var result = _repository.Add(new CreateRequest<TEntity>(MapToModel(request.Item), request.RequestBase));
                 if (result != null)
                 {
                     response.Item = MapToDto(result);
@@ -71,7 +76,7 @@ namespace FLovers.BL.BaseClasses
             var response = new DeleteResponse<TDto>();
             try
             {
-                var result = Repository.Remove(new DeleteRequest<TEntity>(MapToModel(request.Item), request.RequestBase));
+                var result = _repository.Remove(new DeleteRequest<TEntity>(MapToModel(request.Item), request.RequestBase));
                 if (result != null)
                 {
                     response.Item = MapToDto(result);
@@ -114,7 +119,7 @@ namespace FLovers.BL.BaseClasses
             var response = new UpdateResponse<TDto>();
             try
             {
-                var result = Repository.Update(new UpdateRequest<TEntity>(request.Key, MapToModel(request.Item)));
+                var result = _repository.Update(new UpdateRequest<TEntity>(request.Key, MapToModel(request.Item)));
                 if (result != null)
                 {
                     response.Item = MapToDto(result);
@@ -158,7 +163,7 @@ namespace FLovers.BL.BaseClasses
             try
             {
                 var results = new List<TDto>();
-                var models = Repository.GetAll(request);
+                var models = _repository.GetAll(request);
                 if (models.Any())
                 {
                     foreach (var model in models)
@@ -206,7 +211,7 @@ namespace FLovers.BL.BaseClasses
             var response = new GetByIdResponse<TDto>();
             try
             {
-                var result = Repository.Get(new GetByIdRequest<TEntity>(request.Key));
+                var result = _repository.Get(new GetByIdRequest<TEntity>(request.Key));
                 if (result != null)
                 {
                     response.Item = MapToDto(result);
@@ -249,10 +254,10 @@ namespace FLovers.BL.BaseClasses
             var response = new SearchFirstResponse<TDto> { IsSuccess = false, Item = null };
             try
             {
-                if (Repository != null)
+                if (_repository != null)
                 {
                     response.Item = MapToDto(
-                        Repository.SearchFirst(new SearchFirstRequest<TEntity>(request.Predicate, request.RequestBase)));
+                        _repository.SearchFirst(new SearchFirstRequest<TEntity>(request.Predicate, request.RequestBase)));
                     response.IsSuccess = true;
                     return response;
                 }
@@ -293,7 +298,7 @@ namespace FLovers.BL.BaseClasses
             try
             {
                 var results = new List<TDto>();
-                var models = Repository.SearchFor(new SearchForRequest<TEntity>(request.Predicate, request.RequestBase)).ToList();
+                var models = _repository.SearchFor(new SearchForRequest<TEntity>(request.Predicate, request.RequestBase)).ToList();
                 if (models.Any())
                 {
                     results.AddRange(models.Select(model => MapToDto(model)));
